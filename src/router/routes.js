@@ -6,4 +6,6 @@ function loadPage(component) {
 
 export default [
     {path: '/', component:loadPage('HelloWorld')},
+    {path: '/register', component: loadPage('Register')},
+    {path:'/login', component: loadPage('Login')},
 ]
