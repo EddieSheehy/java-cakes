@@ -1,19 +1,16 @@
 <template>
   <Header />
-  <img alt="Java Cakes logo" src="./assets/logo.png">
   <router-view></router-view>
   <Footer />
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Footer,
   }
 }
 </script>
@@ -25,6 +22,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
