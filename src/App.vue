@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <img alt="Vue logo" src="./assets/logo.png">
+  <img alt="Java Cakes logo" src="./assets/logo.png">
   <router-view></router-view>
   <Footer />
 </template>

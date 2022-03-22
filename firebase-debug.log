@@ -1,0 +1,47 @@
+[debug] [2022-03-22T18:11:08.762Z] ----------------------------------------------------------------------
+[debug] [2022-03-22T18:11:08.765Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\colli\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-03-22T18:11:08.766Z] CLI Version:   10.2.1
+[debug] [2022-03-22T18:11:08.766Z] Platform:      win32
+[debug] [2022-03-22T18:11:08.766Z] Node Version:  v14.17.6
+[debug] [2022-03-22T18:11:08.769Z] Time:          Tue Mar 22 2022 18:11:08 GMT+0000 (Greenwich Mean Time)
+[debug] [2022-03-22T18:11:08.770Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-22T18:11:08.890Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-22T18:11:08.890Z] > authorizing via signed-in user (d.collins29@nuigalway.ie)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\colli\Documents\GitHub\java-cakes
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-03-22T18:11:46.701Z] Using project from CLI flag: java-cakes-2b25a
+[debug] [2022-03-22T18:11:46.704Z] > refreshing access token with scopes: []
+[debug] [2022-03-22T18:11:46.706Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-22T18:11:46.864Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Tue, 22 Mar 2022 18:11:47 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-22T18:11:46.904Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/java-cakes-2b25a [none]
+[debug] [2022-03-22T18:11:47.341Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/java-cakes-2b25a 403
+[debug] [2022-03-22T18:11:47.342Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/java-cakes-2b25a {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-03-22T18:11:47.344Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-03-22T18:11:47.404Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\colli\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:47:12)
+    at RetryOperation._fn (C:\Users\colli\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:286:39)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[error] 
+[error] Error: Failed to get Firebase project java-cakes-2b25a. Please make sure the project exists and your account has permission to access it.
