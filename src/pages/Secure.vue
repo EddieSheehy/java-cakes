@@ -12,7 +12,7 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            auth.onAuthStateChanged(function(user) {
+            auth.onAuthStateChanged((user) => {
                 if (user) {
                     // User is signed in continue to the page
                     next();
@@ -32,7 +32,11 @@
                 comments: []
             }
         },
-
+/*
+        created(){
+    this.getUserComments();
+  },
+*/
         methods : {
             getUserComments(){
                 const functions = getFunctions(app);
