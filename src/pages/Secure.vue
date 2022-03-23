@@ -38,7 +38,7 @@
                 const functions = getFunctions(app);
                 if(window.location.hostname === "localhost") // Check if working locally
                     connectFunctionsEmulator(functions, "localhost", 5001);
-                const getComments = httpsCallable(functions, 'secure');
+                const getComments = httpsCallable(functions, 'getcomments');
                 let loader = this.$loading.show({
                     // Optional parameters
                     loader: 'dots',
