@@ -2,7 +2,22 @@
     <h1>Welcome to the secure page</h1>
     <button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>
     <br>
-    {{comments}}
+    <div class="mb-3">
+    <ul id="array-rendering">
+        <li v-for="comment in comments">
+        <div v-if="!editing">
+            <span class='text' @click="enableEditing(comment.comment)">{{comment.comment}}</span>
+        </div>
+        <div v-if="editing">
+            <input v-model="tempValue" class="input"/>
+            <button @click="disableEditing"> Cancel </button>
+            <button @click="save(comment.id)"> Save </button>
+        </div>
+        
+        </li>
+    </ul>
+</div>
+   
 </template>
 <script>
     import app from "../api/firebase"

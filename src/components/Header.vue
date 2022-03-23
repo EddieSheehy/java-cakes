@@ -5,6 +5,7 @@
       <li class = "link" display="block"><router-link to="/login">Login</router-link></li>
       <li class = "link" display="block"><router-link to="/secure">Secure</router-link></li>
       <li class = "link" display="block"><router-link to="/blog">Blog</router-link></li>
+      <li class = "link" id="logOut" display="block"><router-link to="/blog">Log out</router-link></li>
   </div>
 </template>
 
@@ -28,5 +29,8 @@ export default {
   text-decoration: none;
   margin-right: 5px;
   margin-top: 10px;
+}
+#logOut{
+  
 }
 </style>
