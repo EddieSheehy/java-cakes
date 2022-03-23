@@ -4,6 +4,7 @@
       <li class = "link" display="block"><router-link to="/register">Register</router-link></li>
       <li class = "link" display="block"><router-link to="/login">Login</router-link></li>
       <li class = "link" display="block"><router-link to="/secure">Secure</router-link></li>
+      <li class = "link" display="block"><router-link to="/blog">Blog</router-link></li>
   </div>
 </template>
 
