@@ -2,7 +2,7 @@
     <h1>Welcome to the secure page</h1>
     <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
         <button type="button" class="link"><router-link to="/blog">Create Listing</router-link></button>
-        <button type="button" class="link" id="logOut" display="block" @click="logout">Log out</button>
+        <button type="button" class="link" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
     <table border = "2" id="array-rendering">

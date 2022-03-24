@@ -22,21 +22,6 @@
     const auth = getAuth(app);
 
     export default {
-        beforeRouteEnter(to, from, next) {
-            auth.onAuthStateChanged(function(user) {
-                if (user) {
-                    // User is signed in continue to the page
-                    next();
-                } else
-                {
-                    // No user is signed in.
-                    next({path: '/'})
-                    console.log("No user signed in")
-                    // Send them back to the login page
-                }
-            });
-        },
-
         name: "HelloWorld",
         data(){
             return {
@@ -75,5 +60,5 @@
     }
 </script>
 <style scoped>
-  
+
 </style>
