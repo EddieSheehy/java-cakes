@@ -1,80 +1,78 @@
 <template>
-  <router-link to="/House">
-  <div class='content'>
-    <img src="../images/House.jpg" alt="House">
-    
-  </div>
-  </router-link>
-
-  <router-link to="/Room">
-  <div class='content2'>
-    <img src="../images/Room.jpg" alt="Room">
-  </div>
-  </router-link>
+    <h1>Home Page</h1>
+    <table border = "2">
+      <tr>
+          <th>handle</th>
+          <th>comment</th>
+          <th>timestamp</th>
+          <th>id</th>
+      </tr>
+      <tr v-for="comment in comments">
+        <td>{{comment.handle}}</td>
+        <td>{{comment.comment}}</td>
+        <td>{{comment.timestamp}}</td>
+        <td>{{comment.id}}</td>
+      </tr>
+    </table>
 </template>
-
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+    import app from "../api/firebase"
+    import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+    import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
+    const auth = getAuth(app);
+
+    export default {
+        beforeRouteEnter(to, from, next) {
+            auth.onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in continue to the page
+                    next();
+                } else
+                {
+                    // No user is signed in.
+                    next({path: '/'})
+                    console.log("No user signed in")
+                    // Send them back to the login page
+                }
+            });
+        },
+
+        name: "HelloWorld",
+        data(){
+            return {
+                comments: []
+            }
+        },
+        created(){
+          this.getUserComments();
+        },
+
+        methods : {
+            getUserComments(){
+                const functions = getFunctions(app);
+                if(window.location.hostname === "localhost") // Check if working locally
+                    connectFunctionsEmulator(functions, "localhost", 5001);
+                const getComments = httpsCallable(functions, 'getcomments');
+                let loader = this.$loading.show({
+                    // Optional parameters
+                    loader: 'dots',
+                    container: this.$refs.container,
+                    canCancel: false
+                });
+                getComments().then((result) => {
+                    // Read result of the Cloud Function.
+                    // /** @type {any} */
+                    // once the response has returned hide the loader
+                    loader.hide();
+                    console.log(result);
+                    if(result.data === 'No data in database')
+                        this.comments = [{comment : "No comments posted yet for this user"}]
+                    else
+                        this.comments = result.data;
+                });
+            }
+        }
+    }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 20px;
-}
-a {
-  color: #42b983;
-}
-
-div.content {
-    width: 400px;
-    height: 400px;
-    position:relative;
-    padding:20px;
-    box-sizing:border-box;
-    background: #ff8f00;
-    border-radius: 15px;
-    transform: skew(5deg);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    top:200px;
-    left:200px;
-    right:0;
-    bottom:0;
-}
-
-
-div.content2 {
-    width: 400px;
-    height: 400px;
-    position:absolute;
-    padding:20px;
-    box-sizing:border-box;
-    background: #ff8f00;
-    border-radius: 15px;
-    transform: skew(-5deg);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    top: 280px;
-    left:1250px;
-    right:0;
-    bottom:0;
-}
-
-
+    <style scoped>
 </style>
