@@ -2,6 +2,7 @@
     <h1>Welcome to the secure page</h1>
     <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
         <button type="button" class="link"><router-link to="/blog">Create Listing</router-link></button>
+        <button type="button" class="link" id="logOut" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
     <table border = "2" id="array-rendering">
@@ -31,7 +32,7 @@
 </template>
 <script>
     import app from "../api/firebase"
-    import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+    import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth";
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
 
@@ -95,6 +96,7 @@
                     this.getUserComments() // To refresh the client
                 })
                  },
+                 
                 logout() {
                     signOut(getAuth(app)).then(() => {
                         // Send them back to the home page!
