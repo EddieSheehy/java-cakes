@@ -32,6 +32,7 @@
                 // Signed in
                 var user = userCredential.user;
                 console.log(user);
+                this.$router.push("/");
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
