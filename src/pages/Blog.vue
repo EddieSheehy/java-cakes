@@ -1,7 +1,7 @@
 <template>
 <div ref="container" class="container">
-    <h1>Welcome to my blog page</h1>
-    <p>This is my blog page for my SaaS app</p>
+    <h1>Listing Creation</h1>
+    <p>Here you can create listing for propeties</p>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Handle</label>
         <input type="email" v-model="handle" class="form-control" id="exampleFormControlInput1" placeholder="@handle">
@@ -30,10 +30,10 @@
         </li>
     </ul>
 </div>
-    <div>
+    <!--<div>
         Counter {{store.count}}
         <button type="button" @click="store.increment()" class="btn btn-primary">Click Counter {{store.count}}</button>
-    </div>
+    </div>-->
 
     <div>
         <Blog2 />

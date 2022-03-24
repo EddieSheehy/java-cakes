@@ -11,7 +11,7 @@
 <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
 <br>
-    <button @click="register" class="btn btn-primary">Create Account</button>
+    <button @click="register" class="link"><router-link to="/blog">Create Account</router-link></button>
   </div>
 </template>
 
