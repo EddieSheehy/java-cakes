@@ -2,7 +2,20 @@
     <h1>Welcome to the secure page</h1>
     <button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>
     <br>
+<<<<<<< Updated upstream
     {{comments}}
+=======
+    <div class="mb-3">
+    <ul id="array-rendering">
+        <li v-for="comment in comments">
+        <div v-if="!editing">
+            <span class='text' @click="enableEditing(comment.comment)">{{comment.comment}}</span>
+        </div>
+        </li>
+    </ul>
+</div>
+   
+>>>>>>> Stashed changes
 </template>
 <script>
     import app from "../api/firebase"

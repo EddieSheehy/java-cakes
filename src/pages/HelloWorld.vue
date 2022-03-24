@@ -71,7 +71,7 @@ div.content2 {
     display: flex;
     justify-content: center;
     top: 280px;
-    left:1250px;
+    left:800px;
     right:0;
     bottom:0;
 }

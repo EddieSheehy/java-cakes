@@ -9,7 +9,7 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
-        <button @click="login" class="btn btn-primary">Login</button>
+        <router-link :to="{ path: '/' }"><button @click="login" class="btn btn-primary">Login</button></router-link>
     </div>
 </template>
 <script>
