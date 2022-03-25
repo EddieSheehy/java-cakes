@@ -1,4 +1,5 @@
 <template>
+<<<<<<< Updated upstream
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
@@ -27,6 +28,25 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
   </div>
+=======
+    <table border = "2">
+      <tr>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Price</th>
+          <th>Beds</th>
+          <th>Image</th>
+      </tr>
+      <tr v-for="comment in comments">
+        <td>{{comment.image}}</td>
+        <td>{{comment.email}}</td>
+        <td>{{comment.comment}}</td>
+        <td>{{comment.price}}</td>
+        <td>{{comment.beds}}</td>
+        <td></td>
+      </tr>
+    </table>
+>>>>>>> Stashed changes
 </template>
 
 <script>

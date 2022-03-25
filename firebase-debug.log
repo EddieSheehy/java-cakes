@@ -1,0 +1,74 @@
+[debug] [2022-03-25T18:03:26.578Z] ----------------------------------------------------------------------
+[debug] [2022-03-25T18:03:26.581Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start
+[debug] [2022-03-25T18:03:26.581Z] CLI Version:   9.18.0
+[debug] [2022-03-25T18:03:26.581Z] Platform:      darwin
+[debug] [2022-03-25T18:03:26.581Z] Node Version:  v14.17.6
+[debug] [2022-03-25T18:03:26.583Z] Time:          Fri Mar 25 2022 18:03:26 GMT+0000 (Greenwich Mean Time)
+[debug] [2022-03-25T18:03:26.583Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-25T18:03:26.653Z] Field ".emulators.hosting.port" in "firebase.json" is possibly invalid: should be number
+[debug] [2022-03-25T18:03:26.658Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-25T18:03:26.658Z] > authorizing via signed-in user (eddie0sheehy@gmail.com)
+[info] i  emulators: Starting emulators: auth, functions, firestore, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore, hosting"}}
+[debug] [2022-03-25T18:03:26.683Z] [hub] writing locator at /var/folders/5d/y4q934m90t98bg6c460vh2h00000gn/T/hub-year-2-software-engineering.json
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, pubsub, storage\u001b[22m"}}
+[warn] ⚠  Your requested "node" version "16" doesn't match your global version "14" {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"16\" doesn't match your global version \"14\""}}
+[debug] [2022-03-25T18:03:26.800Z] defaultcredentials: writing to file /Users/eddie/.config/firebase/eddie0sheehy_gmail_com_application_default_credentials.json
+[debug] [2022-03-25T18:03:26.804Z] Setting GAC to /Users/eddie/.config/firebase/eddie0sheehy_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/eddie/.config/firebase/eddie0sheehy_gmail_com_application_default_credentials.json"}}
+[debug] [2022-03-25T18:03:26.806Z] > refreshing access token with scopes: []
+[debug] [2022-03-25T18:03:26.807Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-25T18:03:27.063Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Fri, 25 Mar 2022 18:03:27 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-25T18:03:27.128Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/year-2-software-engineering/adminSdkConfig [none]
+[debug] [2022-03-25T18:03:27.696Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/year-2-software-engineering/adminSdkConfig 200
+[debug] [2022-03-25T18:03:27.697Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/year-2-software-engineering/adminSdkConfig {"projectId":"year-2-software-engineering","storageBucket":"year-2-software-engineering.appspot.com","locationId":"us-central"}
+[debug] [2022-03-25T18:03:27.988Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2022-03-25T18:03:27.989Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-03-25T18:03:27.989Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/eddie/.cache/firebase/emulators/cloud-firestore-emulator-v1.13.1.jar","--host","localhost","--port",5002,"--rules","/Users/eddie/Documents/GitHub/java-cakes/firestore.rules","--functions_emulator","localhost:5001"],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/eddie/.cache/firebase/emulators/cloud-firestore-emulator-v1.13.1.jar\",\"--host\",\"localhost\",\"--port\",5002,\"--rules\",\"/Users/eddie/Documents/GitHub/java-cakes/firestore.rules\",\"--functions_emulator\",\"localhost:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"functions_emulator\",\"seed_from_export\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2022-03-25T18:03:29.501Z] Mar 25, 2022 6:03:29 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://localhost:65345
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 25, 2022 6:03:29 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://localhost:65345\n"}}
+[debug] [2022-03-25T18:03:29.535Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2022-03-25T18:03:29.535Z] localhost:5002
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:5002
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"localhost:5002\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=localhost:5002\n\nDev App Server is now running.\n\n"}}
+[debug] [2022-03-25T18:03:32.528Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/year-2-software-engineering/sites 
+[debug] [2022-03-25T18:05:37.452Z] Mar 25, 2022 6:05:37 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 25, 2022 6:05:37 P.M. io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2022-03-25T18:05:37.908Z] Mar 25, 2022 6:05:37 P.M. io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /favicon.ico
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Mar 25, 2022 6:05:37 P.M. io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /favicon.ico\n"}}
+[debug] [2022-03-25T18:05:42.865Z] Functions emulator received unknown request at path /
+[debug] [2022-03-25T18:05:43.541Z] Functions emulator received unknown request at path /favicon.ico
+[debug] [2022-03-25T18:08:41.937Z] Failed to list hosting sites
+[debug] Failed to make request to https://firebasehosting.googleapis.com/v1beta1/projects/year-2-software-engineering/sites
+[debug] [2022-03-25T18:08:41.941Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/year-2-software-engineering/webApps/-/config [none]
+[debug] [2022-03-25T18:08:43.033Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/year-2-software-engineering/webApps/-/config 200
+[debug] [2022-03-25T18:08:43.034Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/year-2-software-engineering/webApps/-/config {"projectId":"year-2-software-engineering","appId":"1:43309485654:web:0737908274d21487b3b5f7","storageBucket":"year-2-software-engineering.appspot.com","locationId":"us-central","apiKey":"AIzaSyCFZRm9PYceeHAFfTKPaacBl2oQdjaDdsQ","authDomain":"year-2-software-engineering.firebaseapp.com","messagingSenderId":"43309485654","measurementId":"G-WMXYMJ0QCG"}
+[info] i  hosting: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] ✔  hosting: Local server: http://0.0.0.0:8000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://0.0.0.0:8000\u001b[22m\u001b[24m"}}
+[debug] [2022-03-25T18:08:43.108Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-03-25T18:08:43.109Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-03-25T18:08:43.109Z] Starting Emulator UI with command {"binary":"node","args":["/Users/eddie/.cache/firebase/emulators/ui-v1.6.3/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/eddie/.cache/firebase/emulators/ui-v1.6.3/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-03-25T18:08:43.271Z] Web / API server started at localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
+[info] i  functions: Watching "/Users/eddie/Documents/GitHub/java-cakes/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/eddie/Documents/GitHub/java-cakes/functions\" for Cloud Functions..."}}
+[debug] [2022-03-25T18:08:43.391Z] [worker-pool] addWorker(~diagnostic~) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(~diagnostic~)"}}
+[debug] [2022-03-25T18:08:43.393Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key ~diagnostic~, total=1"}}
+[debug] [2022-03-25T18:08:43.394Z] [worker-pool] submitWork(triggerId=) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=)"}}
+[debug] [2022-03-25T18:08:43.395Z] [worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: Assigning socketPath: /var/folders/5d/y4q934m90t98bg6c460vh2h00000gn/T/fire_emu_4566.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: Assigning socketPath: /var/folders/5d/y4q934m90t98bg6c460vh2h00000gn/T/fire_emu_4566.sock"}}
+[debug] [2022-03-25T18:08:43.395Z] [worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: BUSY"}}
+[debug] [2022-03-25T18:08:44.181Z] [runtime-status] [4566] Functions runtime initialized. {"cwd":"/Users/eddie/Documents/GitHub/java-cakes/functions","node_version":"14.17.6"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [4566] Functions runtime initialized. {\"cwd\":\"/Users/eddie/Documents/GitHub/java-cakes/functions\",\"node_version\":\"14.17.6\"}"}}
+[debug] [2022-03-25T18:08:44.182Z] [runtime-status] [4566] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [4566] Disabled runtime features: undefined"}}
+[warn] ⚠  The Cloud Functions emulator requires the module "firebase-admin" to be installed. This package is in your package.json, but it's not available. You probably need to run "npm install" in your functions directory. {"metadata":{"emulator":{"name":"functions"},"message":"The Cloud Functions emulator requires the module \"firebase-admin\" to be installed. This package is in your package.json, but it's not available. You probably need to run \"npm install\" in your functions directory."}}
+[info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above) {"metadata":{"emulator":{"name":"functions"},"message":"Your functions could not be parsed due to an issue with your node_modules (see above)"}}
+[debug] [2022-03-25T18:08:44.202Z] [worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: exited"}}
+[debug] [2022-03-25T18:08:44.204Z] [worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-e7adcdef-0b3b-4275-9ade-c415e4b1a84a]: FINISHED"}}
