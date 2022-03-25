@@ -7,15 +7,19 @@
     <div class="mb-3">
     <table border = "2" id="array-rendering">
         <tr>
-          <th>handle</th>
-          <th>comment</th>
-          <th>timestamp</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Price</th>
+          <th>Beds</th>
+          <th>Image</th>
           <th></th>
       </tr>
       <tr v-for="comment in comments">
-        <td>{{comment.handle}}</td>
+        <td>{{comment.email}}</td>
         <td>{{comment.comment}}</td>
-        <td>{{comment.timestamp}}</td>
+        <td>{{comment.price}}</td>
+        <td>{{comment.beds}}</td>
+        <td></td>
         <td><button type="button" @click="deleteComment(comment.id)" class="link">Delete Comment</button></td>
       </tr>
     </table>

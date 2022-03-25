@@ -7,16 +7,6 @@ admin.initializeApp();
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
-exports.helloWorld = functions.https.onRequest((request, response) => {
-    functions.logger.info("Hello logs!", {structuredData: true});
-    response.send("Hello from Firebase!");
-});
-
-exports.echoFunction = functions.https.onRequest((request, response) => {
-    var doubleNum = parseInt(request.query.data);
-    doubleNum *= 2;
-    response.send("The number you passed in doubled is " + doubleNum);
-});
 
 // Accept comment and return the same comment to the user
 exports.postcomment = functions.https.onRequest((request, response) => {
@@ -24,7 +14,7 @@ exports.postcomment = functions.https.onRequest((request, response) => {
         const currentTime = admin.firestore.Timestamp.now();
         request.body.timestamp = currentTime;
         return admin.firestore().collection('comments').add({
-        comment:request.body.data.comment, price:request.body.data.price, beds:request.body.data.beds, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
+        comment:request.body.data.comment, price:request.body.data.price, beds:request.body.data.beds, email:request.body.data.email, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
             response.send({"data": "Saved in Database"});
         });
     });

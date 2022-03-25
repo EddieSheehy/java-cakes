@@ -136,7 +136,7 @@ export default {
         // Check that there is a logged in user
         uid = auth.currentUser.uid; // if logged in then assign uid
       }
-      postComment({ comment: this.comment, beds: this.beds, price: this.price, uid: uid }).then(
+      postComment({ email: this.email, comment: this.comment, beds: this.beds, price: this.price, uid: uid }).then(
         (result) => {
           // Read result of the Cloud Function.
           // /** @type {any} */

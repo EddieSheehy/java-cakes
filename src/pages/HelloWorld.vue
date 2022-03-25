@@ -2,16 +2,18 @@
     <h1>Home Page</h1>
     <table border = "2">
       <tr>
-          <th>handle</th>
-          <th>comment</th>
-          <th>timestamp</th>
-          <th>id</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Price</th>
+          <th>Beds</th>
+          <th>Image</th>
       </tr>
       <tr v-for="comment in comments">
-        <td>{{comment.handle}}</td>
+        <td>{{comment.email}}</td>
         <td>{{comment.comment}}</td>
-        <td>{{comment.timestamp}}</td>
-        <td>{{comment.id}}</td>
+        <td>{{comment.price}}</td>
+        <td>{{comment.beds}}</td>
+        <td></td>
       </tr>
     </table>
 </template>
