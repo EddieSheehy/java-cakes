@@ -1,21 +1,23 @@
 <template>
-    <h1>Home Page</h1>
-    <table border = "2">
-      <tr>
+    <div class="mb-3">
+    <table border = "2" id="array-rendering">
+        <tr>
+          <th>Image</th>
           <th>Email</th>
           <th>Address</th>
           <th>Price</th>
           <th>Beds</th>
-          <th>Image</th>
+          <th></th>
       </tr>
       <tr v-for="comment in comments">
+        <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>{{comment.email}}</td>
         <td>{{comment.comment}}</td>
-        <td>{{comment.price}}</td>
+        <td>€{{comment.price}}</td>
         <td>{{comment.beds}}</td>
-        <td></td>
       </tr>
     </table>
+    </div>
 </template>
 <script>
     import app from "../api/firebase"
@@ -64,7 +66,7 @@
 <style scoped>
     table{
         width:100%;
-        height:300px;
+        height:170px;
         
     }
     td{
@@ -78,5 +80,8 @@
     }
     h1{
         line-height:75px;
+    }
+    #imagebox{
+        width:10%;
     }
 </style>
