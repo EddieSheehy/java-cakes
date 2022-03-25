@@ -14,7 +14,7 @@ exports.postcomment = functions.https.onRequest((request, response) => {
         const currentTime = admin.firestore.Timestamp.now();
         request.body.timestamp = currentTime;
         return admin.firestore().collection('comments').add({
-        comment:request.body.data.comment, price:request.body.data.price, beds:request.body.data.beds, email:request.body.data.email, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
+        comment:request.body.data.comment,email:request.body.data.email, price:request.body.data.price, beds:request.body.data.beds, email:request.body.data.email, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
             response.send({"data": "Saved in Database"});
         });
     });

@@ -1,25 +1,25 @@
 <template>
     <h1>My Profile</h1>
     <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
-        <button type="button" class="link"><router-link to="/blog">Create Listing</router-link></button>
+        <button type="button" id = "create" class="link"><router-link to="/blog">Create Listing</router-link></button>
         <button type="button" class="link" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
     <table border = "2" id="array-rendering">
         <tr>
+          <th>Image</th>
           <th>Email</th>
           <th>Address</th>
           <th>Price</th>
           <th>Beds</th>
-          <th>Image</th>
           <th></th>
       </tr>
       <tr v-for="comment in comments">
+        <td>{{comment.image}}</td>
         <td>{{comment.email}}</td>
         <td>{{comment.comment}}</td>
         <td>{{comment.price}}</td>
         <td>{{comment.beds}}</td>
-        <td></td>
         <td><button type="button" @click="deleteComment(comment.id)" class="link">Delete Comment</button></td>
       </tr>
     </table>
@@ -111,4 +111,24 @@
     }
 </script>
     <style scoped>
+    table{
+        width:100%;
+        height:300px;
+        
+    }
+    td{
+        border: 1px solid black;
+    }
+    th{
+        font-size:25px;
+        height:12px;
+        font-family: "Georgia", Times, serif;
+        border: 1px solid black;
+    }
+    h1{
+        line-height:75px;
+    }
+    #create{
+        text-align: left;
+    }
 </style>

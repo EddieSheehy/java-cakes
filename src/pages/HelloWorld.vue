@@ -62,5 +62,21 @@
     }
 </script>
 <style scoped>
-
+    table{
+        width:100%;
+        height:300px;
+        
+    }
+    td{
+        border: 1px solid black;
+    }
+    th{
+        font-size:25px;
+        height:12px;
+        font-family: "Georgia", Times, serif;
+        border: 1px solid black;
+    }
+    h1{
+        line-height:75px;
+    }
 </style>

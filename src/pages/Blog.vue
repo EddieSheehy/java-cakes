@@ -13,6 +13,15 @@
       ></textarea>
     </div>
     <div class="mb-3">
+      <label for="emailTextArea" class="form-label">Email</label>
+      <input
+        class="form-control"
+        v-model="email"
+        id="Email"
+        placeholder="Email"
+      />
+    </div>
+    <div class="mb-3">
       <label for="priceTextarea" class="form-label">Price (€) per month</label>
       <input
         class="form-control"
