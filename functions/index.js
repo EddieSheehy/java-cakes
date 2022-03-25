@@ -23,8 +23,8 @@ exports.postcomment = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
         const currentTime = admin.firestore.Timestamp.now();
         request.body.timestamp = currentTime;
-        return admin.firestore().collection('comments').add({ handle: request.body.data.handle,
-        comment:request.body.data.comment, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
+        return admin.firestore().collection('comments').add({
+        comment:request.body.data.comment, price:request.body.data.price, beds:request.body.data.beds, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
             response.send({"data": "Saved in Database"});
         });
     });

@@ -3,11 +3,10 @@
     <h1>Listing Creation</h1>
     <p>Here you can create listing for propeties</p>
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Address</label>
+      <label for="addressTextArea" class="form-label">Address</label>
       <textarea
         class="form-control"
-        type="address"
-        v-model="address"
+        v-model="comment"
         id="address"
         placeholder="Address"
         rows="3"
@@ -23,7 +22,7 @@
       />
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Beds</label>
+      <label for="exampleFormControlTextarea" class="form-label">Beds</label>
       <input
         class="form-control"
         v-model="beds"
@@ -90,8 +89,9 @@ export default {
   name: "Blog",
   data() {
     return {
-      handle: "",
       comment: "",
+      price: "",
+      beds: "",
       comments: [],
       tempValue: "",
       editing: false,
@@ -136,7 +136,7 @@ export default {
         // Check that there is a logged in user
         uid = auth.currentUser.uid; // if logged in then assign uid
       }
-      postComment({ handle: this.handle, comment: this.comment, uid: uid }).then(
+      postComment({ comment: this.comment, beds: this.beds, price: this.price, uid: uid }).then(
         (result) => {
           // Read result of the Cloud Function.
           // /** @type {any} */

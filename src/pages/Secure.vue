@@ -1,5 +1,5 @@
 <template>
-    <h1>Welcome to the secure page</h1>
+    <h1>My Profile</h1>
     <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
         <button type="button" class="link"><router-link to="/blog">Create Listing</router-link></button>
         <button type="button" class="link" display="block" @click="logout">Log out</button>
