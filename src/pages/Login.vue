@@ -1,14 +1,18 @@
 <template>
+  <h1>Login</h1>
+  <br>
     <div class="container">
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
+          <br>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
+      <br>
         <button @click="login" class="btn btn-primary">Login</button>
     </div>
 </template>
@@ -32,6 +36,7 @@
                 // Signed in
                 var user = userCredential.user;
                 console.log(user);
+                this.$router.push("/");
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;

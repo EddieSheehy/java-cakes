@@ -1,20 +1,25 @@
 <template>
-    <h1>Welcome to the secure page</h1>
+    <h1>My Profile</h1>
     <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
-        <button type="button" class="link"><router-link to="/blog">Create Listing</router-link></button>
+        <button type="button" id = "create" class="left"><router-link to="/blog">Create Listing</router-link></button>
+        <button type="button" class="right" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
     <table border = "2" id="array-rendering">
         <tr>
-          <th>handle</th>
-          <th>comment</th>
-          <th>timestamp</th>
+          <th>Image</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Price</th>
+          <th>Beds</th>
           <th></th>
       </tr>
       <tr v-for="comment in comments">
-        <td>{{comment.handle}}</td>
+        <td>{{comment.image}}</td>
+        <td>{{comment.email}}</td>
         <td>{{comment.comment}}</td>
-        <td>{{comment.timestamp}}</td>
+        <td>{{comment.price}}</td>
+        <td>{{comment.beds}}</td>
         <td><button type="button" @click="deleteComment(comment.id)" class="link">Delete Comment</button></td>
       </tr>
     </table>
@@ -31,7 +36,7 @@
 </template>
 <script>
     import app from "../api/firebase"
-    import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+    import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth";
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
 
@@ -95,6 +100,7 @@
                     this.getUserComments() // To refresh the client
                 })
                  },
+                 
                 logout() {
                     signOut(getAuth(app)).then(() => {
                         // Send them back to the home page!
@@ -105,4 +111,42 @@
     }
 </script>
     <style scoped>
+    table{
+        width:100%;
+        height:300px;
+        
+    }
+    td{
+        border: 1px solid black;
+    }
+    th{
+        font-size:25px;
+        height:12px;
+        font-family: "Georgia", Times, serif;
+        border: 1px solid black;
+    }
+    h1{
+        line-height:75px;
+    }
+    #create{
+        text-align: left;
+    }
+
+    .left {
+      margin: 0;
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .right {
+      margin: 0;
+      position: absolute;
+      top: 20%;
+      left: 90%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
 </style>
