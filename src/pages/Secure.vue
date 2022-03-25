@@ -1,8 +1,8 @@
 <template>
     <h1>My Profile</h1>
     <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
-        <button type="button" id = "create" class="link"><router-link to="/blog">Create Listing</router-link></button>
-        <button type="button" class="link" display="block" @click="logout">Log out</button>
+        <button type="button" id = "create" class="left"><router-link to="/blog">Create Listing</router-link></button>
+        <button type="button" class="right" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
     <table border = "2" id="array-rendering">
@@ -130,5 +130,23 @@
     }
     #create{
         text-align: left;
+    }
+
+    .left {
+      margin: 0;
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .right {
+      margin: 0;
+      position: absolute;
+      top: 20%;
+      left: 90%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
     }
 </style>

@@ -16,6 +16,7 @@
         >We'll never share your email with anyone else.</small
       >
     </div>
+    <br>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
       <input

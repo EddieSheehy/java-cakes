@@ -44,42 +44,6 @@
         Upload
       </button>
     </div>
-    <!--<div class="mb-3 right">
-      <button type="button" @click="getComments" class="btn btn-primary">
-        Show Comments
-      </button>
-    </div>
-    <div class="mb-3">
-      <ul id="array-rendering">
-        <li v-for="comment in comments">
-          <div v-if="!editing">
-            <span class="text" @click="enableEditing(comment.comment)">{{
-              comment.comment
-            }}</span>
-          </div>
-          <div v-if="editing">
-            <input v-model="tempValue" class="input" />
-            <button @click="disableEditing">Cancel</button>
-            <button @click="save(comment.id)">Save</button>
-          </div>
-          <button
-            type="button"
-            @click="deleteComment(comment.id)"
-            class="btn btn-primary"
-          >
-            Delete Comment
-          </button>
-        </li>
-      </ul>
-    </div>-->
-    <!--<div>
-        Counter {{store.count}}
-        <button type="button" @click="store.increment()" class="btn btn-primary">Click Counter {{store.count}}</button>
-    </div>-->
-
-    <!--<div>
-      <Blog2 />
-    </div>-->
   </div>
 </template>
 
@@ -149,6 +113,7 @@ export default {
         (result) => {
           // Read result of the Cloud Function.
           // /** @type {any} */
+          this.$router.push("/secure");
           console.log(result);
         }
       );
