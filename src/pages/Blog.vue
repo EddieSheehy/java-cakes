@@ -39,6 +39,15 @@
         placeholder="No. Beds"
       />
     </div>
+    <div class="mb-3">
+      <label for="imageTextarea" class="form-label">Image</label>
+      <input
+        class="form-control"
+        v-model="image"
+        id="image"
+        placeholder="Image"
+      />
+    </div>
     <div class="mb-3 right">
       <button type="button" @click="postComment" class="btn btn-primary">
         Upload
@@ -65,6 +74,7 @@ export default {
       comment: "",
       price: "",
       beds: "",
+      image:"",
       comments: [],
       tempValue: "",
       editing: false,
@@ -109,7 +119,7 @@ export default {
         // Check that there is a logged in user
         uid = auth.currentUser.uid; // if logged in then assign uid
       }
-      postComment({ email: this.email, comment: this.comment, beds: this.beds, price: this.price, uid: uid }).then(
+      postComment({ email: this.email, comment: this.comment, beds: this.beds, price: this.price,image:this.image, uid: uid }).then(
         (result) => {
           // Read result of the Cloud Function.
           // /** @type {any} */

@@ -1,8 +1,8 @@
 <template>
     <h1>My Profile</h1>
     <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
-        <button type="button" id = "create" class="left"><router-link to="/blog">Create Listing</router-link></button>
-        <button type="button" class="right" display="block" @click="logout">Log out</button>
+        <button type="button" id = "create" class="link"><router-link to="/blog">Create Listing</router-link></button>
+        <button type="button" class="link" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
     <table border = "2" id="array-rendering">
@@ -15,10 +15,10 @@
           <th></th>
       </tr>
       <tr v-for="comment in comments">
-        <td>{{comment.image}}</td>
+        <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>{{comment.email}}</td>
         <td>{{comment.comment}}</td>
-        <td>{{comment.price}}</td>
+        <td>€{{comment.price}}</td>
         <td>{{comment.beds}}</td>
         <td><button type="button" @click="deleteComment(comment.id)" class="link">Delete Comment</button></td>
       </tr>
@@ -113,7 +113,7 @@
     <style scoped>
     table{
         width:100%;
-        height:300px;
+        height:170px;
         
     }
     td{
@@ -131,22 +131,7 @@
     #create{
         text-align: left;
     }
-
-    .left {
-      margin: 0;
-      position: absolute;
-      top: 20%;
-      left: 10%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
-    .right {
-      margin: 0;
-      position: absolute;
-      top: 20%;
-      left: 90%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+    #imagebox{
+        width:10%;
     }
 </style>
