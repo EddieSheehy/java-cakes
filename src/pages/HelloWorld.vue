@@ -1,3 +1,5 @@
+
+
 <template>
     <div class="mb-3">
     <table border = "2" id="array-rendering">
@@ -15,6 +17,7 @@
         <td>{{comment.comment}}</td>
         <td>€{{comment.price}}</td>
         <td>{{comment.beds}}</td>
+        
       </tr>
     </table>
     </div>
@@ -24,6 +27,8 @@
     import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
+
+    
 
     export default {
         name: "HelloWorld",
