@@ -1,4 +1,5 @@
 <template>
+
   <div ref="container" class="container">
     <h1>Listing Creation</h1>
     <p>Here you can create listing for propeties</p>
@@ -48,24 +49,65 @@
         placeholder="Image"
       />
     </div>
+  <div id="uploadfile">
+    <form id="upload-form">
+      <input type="file" name="file" required/>
+      
+      <input type="submit" value="Upload"/>
+      </form>
+      </div>
+      
+
     <div class="mb-3 right">
       <button type="button" @click="postComment" class="btn btn-primary">
         Upload
       </button>
     </div>
+
   </div>
 </template>
 
 <script>
+
 import Blog2 from "./Blog2";
 import app from "../api/firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getStorage, ref as stRef,uploadBytes,getDownloadURL} from "firebase/storage";
+import {getDatabase, ref as dbRef, push, set} from "firebase/database";
 import {
   getFunctions,
   httpsCallable,
   connectFunctionsEmulator,
 } from "firebase/functions";
 import { store } from "../store/store";
+
+const storage = getStorage(app);
+const database = getDatabase();
+const databaseReference = dbRef(database, "files");
+
+window.addEventListener("load", function () {
+  document.getElementById("upload-form").addEventListener("submit", function (){
+    event.preventDefault();
+    var form = event.target;
+
+    var file = form.file.files[0];
+    
+    const storageRef = stRef(storage, new Date()+ "-" +file.name);
+
+    uploadBytes(storageRef, file).then(function (snapshot){
+      var newFileRef = push(databaseReference);
+      console.log(databaseReference);
+
+
+      set(newFileRef, {
+        "name":file.name,
+
+      
+    
+      });
+    });
+  });
+});
 
 export default {
   name: "Blog",
@@ -81,6 +123,7 @@ export default {
       store,
     };
   },
+
   components: {
     Blog2,
   },

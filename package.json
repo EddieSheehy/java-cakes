@@ -8,17 +8,17 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "^3.21.1",
     "cors": "^2.8.5",
-    "firebase": "^9.6.9",
-    "vue": "^3.0.0",
+    "firebase": "^9.6.10",
+    "vue": "^3.2.31",
     "vue-loading-overlay": "^5.0.3",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0"
+    "@vue/cli-plugin-babel": "^4.5.17",
+    "@vue/cli-service": "^4.5.17",
+    "@vue/compiler-sfc": "^3.2.31"
   },
   "browserslist": [
     "> 1%",
