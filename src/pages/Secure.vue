@@ -19,7 +19,7 @@
         <td>{{comment.contact}}</td>
         <td>{{comment.comment}}</td>
         <td>€{{comment.price}}</td>
-        <td>{{comment.beds}}</td>
+        <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
         <td>{{comment.description}}</td>
         <td><button type="button" @click="deleteComment(comment.id, comment.imagename)" class="btn btn-primary">Delete Comment </button></td>
       </tr>
@@ -147,5 +147,9 @@
     }
     #imagebox{
         width:10%;
+    }
+
+    #bedsplace{
+        white-space: pre-line;
     }
 </style>

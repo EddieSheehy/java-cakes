@@ -1,5 +1,5 @@
-Mar 27, 2022 3:50:00 A.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
-INFO: Started WebSocket server on ws://localhost:60424
+Mar 27, 2022 1:17:13 P.M. com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://localhost:49690
 API endpoint: http://localhost:5003
 If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
 

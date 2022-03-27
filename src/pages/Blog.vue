@@ -32,13 +32,28 @@
       />
     </div>
     <div class="mb-3">
-      <label for="bedsTextarea" class="form-label">Beds</label>
-      <input
-        class="form-control"
-        v-model="beds"
-        id="beds"
-        placeholder="No. Beds"
-      />
+      <label for="bedsTextarea" class="form-label">Beds No Of Doubles</label>
+      <select id="numDoubles">
+        <option value="1">1 Double Room</option>
+        <option value="2">2 Double Rooms</option>
+        <option value="3">3 Double Rooms</option>
+      </select>
+    </div>
+        <div class="mb-3">
+      <label for="bedsTextarea" class="form-label">Beds No Of Singles</label>
+      <select id="numSingles">
+        <option value="1">1 Single Room</option>
+        <option value="2">2 Single Rooms</option>
+        <option value="3">3 Single Rooms</option>
+      </select>
+    </div>
+        <div class="mb-3">
+      <label for="bedsTextarea" class="form-label">Beds No Of Twins</label>
+      <select id="numTwins">
+        <option value="1">1 Twin Room</option>
+        <option value="2">2 Twin Rooms</option>
+        <option value="3">3 Twin Rooms</option>
+      </select>
     </div>
      <div class="mb-3">
       <label for="descriptionTextarea" class="form-label">Description</label>
@@ -103,7 +118,9 @@ export default {
     return {
       comment: "",
       price: "",
-      beds: "",
+      dblbeds: "",
+      sglbeds: "",
+      twnbeds: "",
       image:"",
       imagename:"",
       description:"",
@@ -163,6 +180,12 @@ postComment(){
     console.log(storageRef);
     uploadBytes(storageRef, file).then((snapshot) => {
       var newFileRef = push(databaseReference);
+      var d= document.getElementById("numDoubles");
+      var s= document.getElementById("numSingles");
+      var t= document.getElementById("numTwins");
+      var opDbl = d.options[d.selectedIndex].text;
+      var opSgl = s.options[s.selectedIndex].text;
+      var opTwn = t.options[t.selectedIndex].text;
       set(newFileRef, {
         "name":file.name
       });
@@ -173,7 +196,9 @@ postComment(){
         postComment({
           contact: this.contact,
           comment: this.comment,
-          beds: this.beds,
+          dblbeds: opDbl,
+          sglbeds: opSgl,
+          twnbeds: opTwn,
           price: this.price,
           image: imageUrl,
           imagename:filename,
