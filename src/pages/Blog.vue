@@ -2,7 +2,7 @@
 
   <div ref="container" class="container">
     <h1>Listing Creation</h1>
-    <p>Here you can create listing for propeties</p>
+    <p>Here you can create listing for properties</p>
     <div class="mb-3">
       <label for="addressTextArea" class="form-label">Address</label>
       <textarea
@@ -14,12 +14,12 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="emailTextArea" class="form-label">Email</label>
+      <label id="contactTextArea" class="form-label">Contact</label>
       <input
         class="form-control"
-        v-model="email"
-        id="Email"
-        placeholder="Email"
+        v-model="contact"
+        id="contact"
+        placeholder="Email or Phone Number"
       />
     </div>
     <div class="mb-3">
@@ -32,7 +32,7 @@
       />
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea" class="form-label">Beds</label>
+      <label for="bedsTextarea" class="form-label">Beds</label>
       <input
         class="form-control"
         v-model="beds"
@@ -40,28 +40,22 @@
         placeholder="No. Beds"
       />
     </div>
-    <div class="mb-3">
-      <label for="imageTextarea" class="form-label">Image</label>
-      <input
+     <div class="mb-3">
+      <label for="descriptionTextarea" class="form-label">Description</label>
+      <textarea
         class="form-control"
-        v-model="image"
-        id="image"
-        placeholder="Image"
-      />
+        v-model="description"
+        id="description"
+        placeholder="Description"></textarea>
     </div>
   <div id="uploadfile">
     <form id="upload-form">
       <input type="file" name="file" required/>
-      
-      <input type="submit" value="Upload"/>
-      </form>
-      </div>
-      
-
-    <div class="mb-3 right">
-      <button type="button" @click="postComment" class="btn btn-primary">
+  
+      <button type="submit" @click="postComment" class="btn btn-primary">
         Upload
       </button>
+      </form>
     </div>
 
   </div>
@@ -69,11 +63,11 @@
 
 <script>
 
-import Blog2 from "./Blog2";
+
 import app from "../api/firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getStorage, ref as stRef,uploadBytes,getDownloadURL} from "firebase/storage";
-import {getDatabase, ref as dbRef, push, set} from "firebase/database";
+import {getDatabase, ref as dbRef, push, set, onValue} from "firebase/database";
 import {
   getFunctions,
   httpsCallable,
@@ -84,28 +78,22 @@ import { store } from "../store/store";
 const storage = getStorage(app);
 const database = getDatabase();
 const databaseReference = dbRef(database, "files");
+onValue(databaseReference, function (snapshot) {
+  snapshot.forEach(function (childSnapshot){
+
+    const value = childSnapshot.val();
+    const storageRefDownload = stRef(storage, value.name+Date());
+
+    getDownloadURL(storageRefDownload).then(function (url){
+      
+    });
+  });
+});
+
 
 window.addEventListener("load", function () {
   document.getElementById("upload-form").addEventListener("submit", function (){
     event.preventDefault();
-    var form = event.target;
-
-    var file = form.file.files[0];
-    
-    const storageRef = stRef(storage, new Date()+ "-" +file.name);
-
-    uploadBytes(storageRef, file).then(function (snapshot){
-      var newFileRef = push(databaseReference);
-      console.log(databaseReference);
-
-
-      set(newFileRef, {
-        "name":file.name,
-
-      
-    
-      });
-    });
   });
 });
 
@@ -117,15 +105,13 @@ export default {
       price: "",
       beds: "",
       image:"",
+      imagename:"",
+      description:"",
       comments: [],
       tempValue: "",
       editing: false,
       store,
     };
-  },
-
-  components: {
-    Blog2,
   },
   created() {
     this.getComments();
@@ -150,27 +136,57 @@ export default {
         this.editing = false;
       });
     },
-    postComment() {
-      const functions = getFunctions(app);
-      const auth = getAuth(app);
-      if (window.location.hostname === "localhost")
-        // Check if working locally
-        connectFunctionsEmulator(functions, "localhost", 5001);
-      const postComment = httpsCallable(functions, "postcomment");
-      let uid = "anonymous";
-      if (auth.currentUser != null) {
-        // Check that there is a logged in user
-        uid = auth.currentUser.uid; // if logged in then assign uid
-      }
-      postComment({ email: this.email, comment: this.comment, beds: this.beds, price: this.price,image:this.image, uid: uid }).then(
-        (result) => {
-          // Read result of the Cloud Function.
-          // /** @type {any} */
+
+postComment(){
+    const functions = getFunctions(app);
+    const auth = getAuth(app);
+    
+    if (window.location.hostname === "localhost")
+      // Check if working locally
+      connectFunctionsEmulator(functions, "localhost", 5001);
+    
+    const postComment = httpsCallable(functions, "postcomment");
+    let uid = "anonymous";
+    
+    if (auth.currentUser != null) {
+      // Check that there is a logged in user
+      uid = auth.currentUser.uid; // if logged in then assign uid
+    }
+    
+    // Insert Image and Grab Url
+    let imageUrl = '';
+    
+    var file = document.getElementById("upload-form").file.files[0];
+    const filename = file.name+Date();
+
+    const storageRef = stRef(storage, filename);
+    console.log(storageRef);
+    uploadBytes(storageRef, file).then((snapshot) => {
+      var newFileRef = push(databaseReference);
+      set(newFileRef, {
+        "name":file.name
+      });
+      
+      getDownloadURL(storageRef).then((url) => {
+        imageUrl = url;
+
+        postComment({
+          contact: this.contact,
+          comment: this.comment,
+          beds: this.beds,
+          price: this.price,
+          image: imageUrl,
+          imagename:filename,
+          description: this.description,
+          uid: uid,
+        }).then((result) => {
           this.$router.push("/secure");
           console.log(result);
-        }
-      );
+        });
+      });
+    });    
     },
+    
     getComments() {
       const functions = getFunctions(app);
       if (window.location.hostname === "localhost")
@@ -210,10 +226,21 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  text-align: left;
+
+
+input{
+  margin-left:auto;
+  margin-right:auto;
+  width:25%;
 }
-.right {
-  text-align: right;
+
+textarea{
+  margin-left:auto;
+  margin-right:auto;
+  width:25%;
+}
+
+label{
+  font-weight:bold;
 }
 </style>

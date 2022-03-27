@@ -3,8 +3,8 @@
   <br>
     <div class="container">
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="exampleInputEmail1">Email Address</label>
+            <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
           <br>
@@ -48,4 +48,13 @@
 }
 </script>
     <style scoped>
-</style>
+        h1{
+            line-height:100px;
+        }
+
+        input{
+            width:25%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>

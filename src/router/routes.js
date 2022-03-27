@@ -4,7 +4,7 @@ function loadPage (component) {
 }
 
 export default [
-    { path: '/', component: loadPage('HelloWorld')},
+    { path: '/', component: loadPage('HomePage')},
     { path: '/house', component: loadPage('House') },
     { path: '/room', component: loadPage('Room')},
     { path: '/register', component: loadPage('Register')},

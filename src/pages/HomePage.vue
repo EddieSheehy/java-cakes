@@ -5,7 +5,7 @@
     <table border = "2" id="array-rendering">
         <tr>
           <th>Image</th>
-          <th>Email</th>
+          <th>Contact</th>
           <th>Address</th>
           <th>Price</th>
           <th>Beds</th>
@@ -13,7 +13,7 @@
       </tr>
       <tr v-for="comment in comments">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
-        <td>{{comment.email}}</td>
+        <td>{{comment.contact}}</td>
         <td>{{comment.comment}}</td>
         <td>€{{comment.price}}</td>
         <td>{{comment.beds}}</td>
@@ -69,23 +69,26 @@
     }
 </script>
 <style scoped>
+
+
     table{
         width:100%;
         height:170px;
         
     }
+    tr:nth-child(even){background-color: #f2f2f2}
     td{
-        border: 1px solid black;
+
     }
     th{
+        background-color: #04AA6D;
+        color: white;
         font-size:25px;
         height:12px;
         font-family: "Georgia", Times, serif;
-        border: 1px solid black;
+
     }
-    h1{
-        line-height:75px;
-    }
+
     #imagebox{
         width:10%;
     }

@@ -1,20 +1,17 @@
 <template>
   <div class="container">
-    <h1>Create an account</h1>
+    <h1>Create An Account</h1>
     <div class="form-group">
       <br />
-      <label for="exampleInputEmail1">Email address</label>
+      <label for="InputEmail">Email Address</label>
       <input
-        type="email"
+        type="contact"
         v-model="email"
         class="form-control"
-        id="exampleInputEmail1"
+        id="InputEmail"
         aria-describedby="emailHelp"
-        placeholder="Enter email"
+        placeholder="Enter Email"
       />
-      <small id="emailHelp" class="form-text text-muted"
-        >We'll never share your email with anyone else.</small
-      >
     </div>
     <br>
     <div class="form-group">
@@ -23,14 +20,13 @@
         type="password"
         v-model="password"
         class="form-control"
-        id="exampleInputPassword1"
+        id="InputPassword"
         placeholder="Password"
       />
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email or password with anyone else.</small>
     </div>
     <br />
-    <button @click="register" class="link">
-      <router-link to="/blog">Create Account</router-link>
-    </button>
+    <button @click="register" onclick="window.location.href='/'" class="btn btn-primary">Create Account</button>
   </div>
 </template>
 
@@ -73,4 +69,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+  h1{
+    line-height:100px;
+  }
+
+  input{
+    width:25%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+</style>
