@@ -9,14 +9,15 @@
           <th>Address</th>
           <th>Price</th>
           <th>Beds</th>
-          <th></th>
+          <th>Description</th>
       </tr>
       <tr v-for="comment in comments">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>{{comment.contact}}</td>
         <td>{{comment.comment}}</td>
         <td>€{{comment.price}}</td>
-        <td>{{comment.beds}}</td>
+        <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
+        <td>{{comment.description}}</td>
         
       </tr>
     </table>

@@ -21,19 +21,25 @@
         <td>€{{comment.price}}</td>
         <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
         <td>{{comment.description}}</td>
-        <td><button type="button" @click="deleteComment(comment.id, comment.imagename)" class="btn btn-primary">Delete Comment </button></td>
+        <td><button type="button" @click="deleteComment(comment.id, comment.imagename)" class="btn btn-primary">Delete Comment </button>
+        <br></td>
       </tr>
     </table>
     </div>
+
    
 </template>
 <script>
     import app from "../api/firebase"
     import { getStorage, ref, deleteObject } from "firebase/storage";
+    import { getDatabase, ref as dbRef, set,update} from "firebase/database"
     import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth";
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
     const storage = getStorage(app);
+
+
+
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -85,7 +91,7 @@
                         this.comments = result.data;
                 });
             },
-                deleteComment(id,imagename){
+            deleteComment(id,imagename){
                 console.log(id);
                 console.log(imagename);
                 const functions = getFunctions(app);
@@ -95,23 +101,23 @@
                 const desertRef = ref(storage, imagename);
                 
                 console.log(desertRef);
-                deleteComment().then((result) => {
-                    this.getUserComments() // To refresh the client
-                    deleteObject(desertRef).then(() => {
-                    // File deleted successfully
-                    }).catch((error) => {
-                    // Uh-oh, an error occurred!
-                    });
-                })
+            deleteComment().then((result) => {
+                this.getUserComments() // To refresh the client
+                deleteObject(desertRef).then(() => {
+                // File deleted successfully
+                }).catch((error) => {
+                // Uh-oh, an error occurred!
+                });
+            })
+            },
+                
+            logout() {
+                signOut(getAuth(app)).then(() => {
+                    // Send them back to the home page!
+                    this.$router.push("/");
+                });
+            }
 
-                 },
-                 
-                logout() {
-                    signOut(getAuth(app)).then(() => {
-                        // Send them back to the home page!
-                        this.$router.push("/");
-                    });
-                }
         }
     }
 </script>
@@ -119,6 +125,11 @@
 
     #logoutbtn{
         background-color: #FF0000 !important
+    }
+
+    #openformbtn{
+        background-color: #FFFF00 !important;
+        color: black
     }
 
     table{
@@ -149,7 +160,7 @@
         width:10%;
     }
 
-    #bedsplace{
-        white-space: pre-line;
-    }
+
+
+    
 </style>
