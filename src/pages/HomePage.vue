@@ -9,7 +9,7 @@
           <th>Address</th>
           <th>Price</th>
           <th>Beds</th>
-          <th>Description</th>
+          <th id="descplace">Description</th>
       </tr>
       <tr v-for="comment in comments">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
@@ -92,5 +92,9 @@
 
     #imagebox{
         width:10%;
+    }
+
+        #descplace{
+        width:22%;
     }
 </style>
