@@ -6,7 +6,44 @@
         <button onclick="window.location.href='/blog'" id = "createbtn" class="btn btn-primary">Create Listing</button>
     <!--Logout is only shown on secure page so it does not appear to users who aren't logged in-->
         <button id = "logoutbtn" class="btn btn-primary" display="block" @click="logout">Log out</button>
-    <br><br>
+  <br><br>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Property</h4>
+        </div>
+        <div class="modal-body">
+          <h5 class="modal-title">Contact</h5>
+          <input v-model="tempContact" class="input" style="width: 300px; height: 70px"/>
+          <br>
+        </div>
+        <div class="modal-body">
+          <h5 class="modal-title">Address</h5>
+          <input v-model="tempComment" class="input" style="width: 300px; height: 70px"/>
+          <br>
+        </div>
+        <div class="modal-body">
+          <h5 class="modal-title">Price</h5>
+          <input v-model="tempPrice" class="input" style="width: 300px; height: 70px"/>
+          <br>
+        </div>
+        <div class="modal-body">
+          <h5 class="modal-title">Description</h5>
+          <input v-model="tempDescription" class="input" style="width: 300px; height: 70px"/>
+          <br>
+        </div>
+        <div class = "modal-footer">
+          <button @click="disableEditing" data-dismiss="modal" class="btn btn-success"> Cancel </button>
+          <button @click="save(currComment.id)" data-dismiss="modal" class="btn btn-success"> Save </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
     <div class="mb-3">
     <table border = "2" id="array-rendering">
         <tr>
@@ -22,48 +59,28 @@
       <tr v-for="comment in comments">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>
-          <div v-if="!editing">
           {{comment.contact}}
-          </div>
-          <div v-if="editing">
-            <input v-model="tempContact" class="input"/>
-          </div>
         </td>
         <td>
-          <div v-if="!editing">
           {{comment.comment}}
-          </div>
-          <div v-if="editing">
-            <input v-model="tempComment" class="input"/>
-          </div>
         </td>
         <td>
-          <div v-if="!editing">
           €{{comment.price}}
-          </div>
-          <div v-if="editing">
-            <input v-model="tempPrice" class="input"/>
-          </div>
         </td>
         <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
         <td id="descplace">
-          <div v-if="!editing">
           {{comment.description}}
-          </div>
-          <div v-if="editing">
-            <input v-model="tempDescription" class="input"/>
-          </div>
         </td>
         <!--Comment name and image name need to be passed in to deleteComment function to know which to delete-->
         <td>
-          <div v-if="!editing">
             <button type="button" @click="deleteComment(comment.id, comment.imagename)" class="btn btn-success"> Delete Listing </button>
             <br><br>
-            <button type="button" @click="enableEditing(comment.contact, comment.comment, comment.price, comment.description)" class="btn btn-success"> Edit Listings </button>
+            <div v-if="!editing">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#myModal" @click="enableEditing(comment.contact, comment.comment, comment.price, comment.description); setCurrComment(comment.contact, comment.comment, comment.price, comment.description)" class="btn btn-success"> Edit Listings </button>
            </div>
           <div v-if="editing">
-            <button @click="disableEditing"> Cancel </button>
-            <button @click="save(comment.id)"> Save </button>
+            <button type="button" @click="disableEditing" class="btn btn-success"> Cancel </button>
+            <button type="button" @click="save(comment.id)" class="btn btn-success"> Save </button>
           </div>
         </td>
       </tr>
@@ -108,7 +125,8 @@
               tempComment: "",
               tempPrice: "",
               tempDescription: "",
-              editing: false
+              editing: false,
+              currComment: null
             }
         },
         // lists comments on page creation
@@ -193,10 +211,14 @@
             if (window.location.hostname === "localhost") // Check if working locally
               connectFunctionsEmulator(functions, "localhost", 5001);
             const updateComment = httpsCallable(functions, 'updatecomment?id=' + id);
-            updateComment({"comment": this.tempComment, "contact": this.tempContact, "price": this.tempPrice,"description": this.tempDescription}).then((result) => {
+            updateComment({"comment": this.currComment.comment, "contact": this.currComment.contact, "price": this.currComment.price,"description": this.currComment.description}).then((result) => {
               this.getUserComments();
               this.editing = false;
             })
+          },
+
+          setCurrComment(comment) {
+            this.currComment = comment;
           }
         }
     }
@@ -244,7 +266,5 @@
     #descplace{
         width:22%;
     }
-
-
     
 </style>
