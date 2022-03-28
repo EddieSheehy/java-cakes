@@ -1,7 +1,10 @@
 <template>
+  <!--Page is for admins of the site so that they can view, delete and edit listings-->
+
     <h1>My Profile</h1>
-    <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
+        <!--Create listing button-->
         <button onclick="window.location.href='/blog'" id = "createbtn" class="btn btn-primary">Create Listing</button>
+    <!--Logout is only shown on secure page so it does not appear to users who aren't logged in-->
         <button id = "logoutbtn" class="btn btn-primary" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
@@ -14,13 +17,19 @@
           <th>Beds</th>
           <th>Description</th>
       </tr>
+      <!--For loop that goes through json of comments stored on database so data can be listed-->
       <tr v-for="comment in comments">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>{{comment.contact}}</td>
         <td>{{comment.comment}}</td>
         <td>€{{comment.price}}</td>
         <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
+<<<<<<< Updated upstream
         <td id="descplace">{{comment.description}}</td>
+=======
+        <td>{{comment.description}}</td>
+        <!--Comment name and image name need to be passed in to deleteComment function to know which to delete-->
+>>>>>>> Stashed changes
         <td><button type="button" @click="deleteComment(comment.id, comment.imagename)" class="btn btn-primary">Delete Comment </button>
         <br></td>
       </tr>
@@ -63,15 +72,18 @@
                 comments: []
             }
         },
+        // lists comments on page creation
         created(){
           this.getUserComments();
         },
 
         methods : {
+            // this function does not seem to actually only list users comments
             getUserComments(){
                 const functions = getFunctions(app);
                 if(window.location.hostname === "localhost") // Check if working locally
                     connectFunctionsEmulator(functions, "localhost", 5001);
+                // uses the getcomments function in index file to make getcomments variable
                 const getComments = httpsCallable(functions, 'getcomments');
                 let loader = this.$loading.show({
                     // Optional parameters
@@ -97,12 +109,15 @@
                 const functions = getFunctions(app);
                 if(window.location.hostname === "localhost") // Check if working locally
                     connectFunctionsEmulator(functions, "localhost", 5001);
+                // uses deletecomment function from index.js for thi variable
                 const deleteComment = httpsCallable(functions, 'deletecomment?id='+id);
+                // desertRef variable stores path to image file
                 const desertRef = ref(storage, imagename);
                 
                 console.log(desertRef);
             deleteComment().then((result) => {
                 this.getUserComments() // To refresh the client
+              // Deletes the reference variable so it is reused by accident
                 deleteObject(desertRef).then(() => {
                 // File deleted successfully
                 }).catch((error) => {
@@ -133,6 +148,7 @@
     }
 
     table{
+       /* Important for making sure listing spans entire page */
         width:100%;
         height:170px;
         

@@ -1,11 +1,11 @@
 <template>
+  <!--Page header that is visible on all pages-->
+
   <div class="nav">
       <li class = "link" display="block"><router-link to="/"><img alt="Java Cake logo" src="../assets/logo.png"></router-link></li>
       <li class = "link" display="block"><router-link to="/register">Register</router-link></li>
       <li class = "link" display="block"><router-link to="/login">Login</router-link></li>
       <li class = "link" display="block"><router-link to="/secure">Profile</router-link></li>
-      <!--<li class = "link" display="block"><router-link to="/blog">Blog</router-link></li>-->
-      <!--<li class = "link" id="logOut" display="block"><router-link to="/blog">Log out</router-link></li>-->
   </div>
 </template>
 

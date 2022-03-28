@@ -1,4 +1,6 @@
 <template>
+  <!--Login page for admins of the site-->
+
   <h1>Login</h1>
   <br>
     <div class="container">

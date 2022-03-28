@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
-const cors = require('cors')({origin: true});
+const cors = require('cors')({origin: true}); // still experiencing cors issues even with this + npm install cors
 
 admin.initializeApp();
 
@@ -58,6 +58,7 @@ exports.updatecomment = functions.https.onRequest((request, response) => {
     });
 });
 
+// This function is not doing what its supposed to
 exports.secure = functions.https.onCall((data, context) => {
     const uid = context.auth.uid;
     if(!uid) {

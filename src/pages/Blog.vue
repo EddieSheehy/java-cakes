@@ -1,10 +1,12 @@
 <template>
+  <!--Page is for listing creation and is only accessible by administrators-->
 
   <div ref="container" class="container">
     <h1>Listing Creation</h1>
     <p>Here you can create listing for properties</p>
     <div class="mb-3">
       <label for="addressTextArea" class="form-label">Address</label>
+      <!--Note that "comment" stores address-->
       <textarea
         class="form-control"
         v-model="comment"
@@ -34,6 +36,7 @@
     <div class="mb-3">
       <label for="bedsTextarea" class="form-label">Beds No Of Doubles</label>
       <select id="numDoubles">
+        <!--Drop down list of options-->
         <option value="0">0 Double Rooms</option>
         <option value="1">1 Double Rooms</option>
         <option value="2">2 Double Rooms</option>
@@ -84,7 +87,8 @@
   <div id="uploadfile">
     <form id="upload-form">
       <input type="file" name="file" required/>
-  
+
+      <!--"postComment" actually posts listings-->
       <button type="submit" @click="postComment" class="btn btn-primary">
         Upload
       </button>
@@ -108,15 +112,19 @@ import {
 } from "firebase/functions";
 import { store } from "../store/store";
 
+// variables for storing image references
 const storage = getStorage(app);
 const database = getDatabase();
 const databaseReference = dbRef(database, "files");
+
+
 onValue(databaseReference, function (snapshot) {
   snapshot.forEach(function (childSnapshot){
 
     const value = childSnapshot.val();
     const storageRefDownload = stRef(storage, value.name+Date());
 
+    // firebase function that gives url from image directory
     getDownloadURL(storageRefDownload).then(function (url){
       
     });
@@ -150,6 +158,7 @@ export default {
   },
   methods: {
 
+    // postComment is used for adding listings
     postComment(){
         const functions = getFunctions(app);
         const auth = getAuth(app);
@@ -185,7 +194,8 @@ export default {
           set(newFileRef, {
             "name":file.name
           });
-          
+
+          // storage reference to image is passed in to function
           getDownloadURL(storageRef).then((url) => {
             imageUrl = url;
 
