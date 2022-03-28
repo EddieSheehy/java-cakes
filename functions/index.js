@@ -52,7 +52,7 @@ exports.deletecomment = functions.https.onRequest((request, response) => {
 
 exports.updatecomment = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
-        return admin.firestore().collection('comments').doc(request.query.id).update({comment:request.body.data.comment}).then(() => {
+        return admin.firestore().collection('comments').doc(request.query.id).update(request.body.data).then(() => {
             response.send({"data": "Updated document in database"});
         });
     });
