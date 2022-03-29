@@ -1,44 +1,54 @@
 <template>
+  <!--Page is for admins of the site so that they can view, delete and edit listings-->
+
     <h1>My Profile</h1>
-    <!--<button type = "button" @click = "getUserComments" class="btn btn-primary">Get Comments</button>-->
-        <button type="button" id = "create" class="left"><router-link to="/blog">Create Listing</router-link></button>
-        <button type="button" class="right" display="block" @click="logout">Log out</button>
+        <!--Create listing button-->
+        <button onclick="window.location.href='/blog'" id = "createbtn" class="btn btn-primary">Create Listing</button>
+    <!--Logout is only shown on secure page so it does not appear to users who aren't logged in-->
+        <button id = "logoutbtn" class="btn btn-primary" display="block" @click="logout">Log out</button>
     <br><br>
     <div class="mb-3">
     <table border = "2" id="array-rendering">
         <tr>
           <th>Image</th>
-          <th>Email</th>
+          <th>Contact</th>
           <th>Address</th>
           <th>Price</th>
           <th>Beds</th>
-          <th></th>
+          <th>Description</th>
       </tr>
+      <!--For loop that goes through json of comments stored on database so data can be listed-->
       <tr v-for="comment in comments">
-        <td>{{comment.image}}</td>
-        <td>{{comment.email}}</td>
+        <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
+        <td>{{comment.contact}}</td>
         <td>{{comment.comment}}</td>
-        <td>{{comment.price}}</td>
-        <td>{{comment.beds}}</td>
-        <td><button type="button" @click="deleteComment(comment.id)" class="link">Delete Comment</button></td>
+        <td>€{{comment.price}}</td>
+        <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
+<<<<<<< Updated upstream
+        <td id="descplace">{{comment.description}}</td>
+=======
+        <td>{{comment.description}}</td>
+        <!--Comment name and image name need to be passed in to deleteComment function to know which to delete-->
+>>>>>>> Stashed changes
+        <td><button type="button" @click="deleteComment(comment.id, comment.imagename)" class="btn btn-primary">Delete Comment </button>
+        <br></td>
       </tr>
     </table>
     </div>
-    <!--<ul id="array-rendering">
-        <li v-for="comment in comments">
-        <div v-if="!editing">
-            <span class='text' @click="enableEditing(comment.comment)">{{comment.comment}}</span>
-        </div>
-        <button type="button" @click="deleteComment(comment.id)" class="link">Delete Comment</button>
-        </li>
-    </ul>-->
+
    
 </template>
 <script>
     import app from "../api/firebase"
+    import { getStorage, ref, deleteObject } from "firebase/storage";
+    import { getDatabase, ref as dbRef, set,update} from "firebase/database"
     import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth";
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
+    const storage = getStorage(app);
+
+
+
 
     export default {
         beforeRouteEnter(to, from, next) {
@@ -62,15 +72,18 @@
                 comments: []
             }
         },
+        // lists comments on page creation
         created(){
           this.getUserComments();
         },
 
         methods : {
+            // this function does not seem to actually only list users comments
             getUserComments(){
                 const functions = getFunctions(app);
                 if(window.location.hostname === "localhost") // Check if working locally
                     connectFunctionsEmulator(functions, "localhost", 5001);
+                // uses the getcomments function in index file to make getcomments variable
                 const getComments = httpsCallable(functions, 'getcomments');
                 let loader = this.$loading.show({
                     // Optional parameters
@@ -90,63 +103,83 @@
                         this.comments = result.data;
                 });
             },
-                deleteComment(id){
+            deleteComment(id,imagename){
                 console.log(id);
+                console.log(imagename);
                 const functions = getFunctions(app);
                 if(window.location.hostname === "localhost") // Check if working locally
                     connectFunctionsEmulator(functions, "localhost", 5001);
+                // uses deletecomment function from index.js for thi variable
                 const deleteComment = httpsCallable(functions, 'deletecomment?id='+id);
-                deleteComment().then((result) => {
-                    this.getUserComments() // To refresh the client
-                })
-                 },
-                 
-                logout() {
-                    signOut(getAuth(app)).then(() => {
-                        // Send them back to the home page!
-                        this.$router.push("/");
-                    });
-                }
+                // desertRef variable stores path to image file
+                const desertRef = ref(storage, imagename);
+                
+                console.log(desertRef);
+            deleteComment().then((result) => {
+                this.getUserComments() // To refresh the client
+              // Deletes the reference variable so it is reused by accident
+                deleteObject(desertRef).then(() => {
+                // File deleted successfully
+                }).catch((error) => {
+                // Uh-oh, an error occurred!
+                });
+            })
+            },
+                
+            logout() {
+                signOut(getAuth(app)).then(() => {
+                    // Send them back to the home page!
+                    this.$router.push("/");
+                });
+            }
+
         }
     }
 </script>
     <style scoped>
+
+    #logoutbtn{
+        background-color: #FF0000 !important
+    }
+
+    #openformbtn{
+        background-color: #FFFF00 !important;
+        color: black
+    }
+
     table{
+       /* Important for making sure listing spans entire page */
         width:100%;
-        height:300px;
+        height:170px;
         
     }
+    tr:nth-child(even){background-color: #f2f2f2}
     td{
-        border: 1px solid black;
+
     }
     th{
+        background-color: #04AA6D;
+        color: white;
         font-size:25px;
         height:12px;
         font-family: "Georgia", Times, serif;
-        border: 1px solid black;
+
     }
     h1{
         line-height:75px;
     }
-    #create{
+    #createbtn{
         text-align: left;
+        background-color: #26abff !important
+    }
+    #imagebox{
+        width:10%;
     }
 
-    .left {
-      margin: 0;
-      position: absolute;
-      top: 20%;
-      left: 10%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+    #descplace{
+        width:22%;
     }
 
-    .right {
-      margin: 0;
-      position: absolute;
-      top: 20%;
-      left: 90%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
+
+    
 </style>
