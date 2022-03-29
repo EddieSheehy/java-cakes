@@ -7,6 +7,8 @@
     <!--Logout is only shown on secure page so it does not appear to users who aren't logged in-->
         <button id = "logoutbtn" class="btn btn-primary" display="block" @click="logout">Log out</button>
   <br><br>
+    <br><br>
+
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -17,17 +19,23 @@
         </div>
         <div class="modal-body">
           <h5 class="modal-title">Contact</h5>
-          <input v-model="tempContact" class="input" style="width: 300px; height: 70px"/>
+          <div>
+            <input v-model="tempContact" class="input" style="width: 300px; height: 70px"/>
+            </div>
           <br>
         </div>
         <div class="modal-body">
           <h5 class="modal-title">Address</h5>
+          <div>
           <input v-model="tempComment" class="input" style="width: 300px; height: 70px"/>
+            </div>
           <br>
         </div>
         <div class="modal-body">
           <h5 class="modal-title">Price</h5>
+          <div>
           <input v-model="tempPrice" class="input" style="width: 300px; height: 70px"/>
+            </div>
           <br>
         </div>
         <div class="modal-body">
@@ -36,15 +44,15 @@
           <br>
         </div>
         <div class = "modal-footer">
-          <button @click="disableEditing" data-dismiss="modal" class="btn btn-success"> Cancel </button>
-          <button @click="save(currComment.id)" data-dismiss="modal" class="btn btn-success"> Save </button>
+          <button @click="disableEditing" data-bs-dismiss="modal" class="btn btn-success"> Cancel </button>
+          <button  data-bs-dismiss="modal" class="btn btn-success"> Save </button>
         </div>
       </div>
-
     </div>
   </div>
 
-    <div class="mb-3">
+
+      <div class="mb-3">
     <table border = "2" id="array-rendering">
         <tr>
           <th>Image</th>
@@ -59,17 +67,54 @@
       <tr v-for="comment in comments">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>
+          <div>
+            <div v-if="!editing">
           {{comment.contact}}
+            </div>
+          </div>
+          <div v-if="editing">
+            Edited:
+            <br>
+            {{currComment.contact}}
+          </div>
         </td>
+
         <td>
+          <div>
+            <div v-if="!editing">
           {{comment.comment}}
+          </div>
+          </div>
+          <div v-if="editing">
+            Edited:
+            <br>
+            {{currComment.comment}}
+          </div>
         </td>
         <td>
+          <div>
+            <div v-if="!editing">
           €{{comment.price}}
+          </div>
+          </div>
+          <div v-if="editing">
+            Edited:
+          <br>
+            {{currComment.price}}
+          </div>
         </td>
         <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
         <td id="descplace">
-          {{comment.description}}
+          <div>
+            <div v-if="!editing">
+              {{comment.description}}
+            </div>
+          </div>
+          <div v-if="editing">
+            Edited:
+            <br>
+            {{currComment.description}}
+          </div>
         </td>
         <!--Comment name and image name need to be passed in to deleteComment function to know which to delete-->
         <td>
@@ -79,15 +124,15 @@
             <button type="button" data-bs-toggle="modal" data-bs-target="#myModal" @click="enableEditing(comment.contact, comment.comment, comment.price, comment.description); setCurrComment(comment.contact, comment.comment, comment.price, comment.description)" class="btn btn-success"> Edit Listings </button>
            </div>
           <div v-if="editing">
-            <button type="button" @click="disableEditing" class="btn btn-success"> Cancel </button>
-            <button type="button" @click="save(comment.id)" class="btn btn-success"> Save </button>
+            <button @click="disableEditing()"> Cancel </button>
+            <button @click=" disableEditing(); save(comment.id);"> Save </button>
           </div>
         </td>
       </tr>
     </table>
     </div>
 
-   
+
 </template>
 <script>
     import app from "../api/firebase"
@@ -156,6 +201,7 @@
                 this.comments = result.data;
             });
           },
+
           deleteComment(id, imagename) {
             console.log(id);
             console.log(imagename);
@@ -195,11 +241,16 @@
           },
 
           disableEditing() {
+            this.contact = this.tempContact;
+            this.comment = this.tempComment;
+            this.price = this.tempPrice;
+            this.description = this.tempDescription;
+
             this.tempContact = null;
             this.tempComment = null;
             this.tempPrice = null;
             this.tempDescription = null;
-            this.editing = false;
+            this.$router.push("/secure");
           },
 
           save(id) {
@@ -207,7 +258,7 @@
             if (window.location.hostname === "localhost") // Check if working locally
               connectFunctionsEmulator(functions, "localhost", 5001);
             const updateComment = httpsCallable(functions, 'updatecomment?id=' + id);
-            updateComment({"comment": this.currComment.comment, "contact": this.currComment.contact, "price": this.currComment.price,"description": this.currComment.description}).then((result) => {
+            updateComment({"comment": this.comment, "contact": this.contact, "price": this.price,"description": this.description}).then((result) => {
               this.getUserComments();
               this.editing = false;
             })

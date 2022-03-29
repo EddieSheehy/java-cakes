@@ -36,7 +36,6 @@
 <script>
 import app from "../api/firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import getCookie from "../utility/utility";
 
 export default {
   name: "Register",
@@ -55,8 +54,6 @@ export default {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          document.cookie = "accessToken=" + user.accessToken;
-          console.log("Cookie Jar Access Token: ", getCookie("accessToken"));
           console.log(user);
           // Redirects to home page
           this.$router.push("/");

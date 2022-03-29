@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Mar 28, 2022 10:36:22 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
 INFO: Started WebSocket server on ws://localhost:58505
 API endpoint: http://localhost:5004
@@ -50,6 +51,25 @@ INFO: Detected HTTP/2 connection.
 Mar 28, 2022 10:38:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
 Mar 28, 2022 10:38:40 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+=======
+Mar 29, 2022 6:20:29 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://localhost:53747
+API endpoint: http://localhost:5003
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:5003
+
+Dev App Server is now running.
+
+Mar 29, 2022 6:21:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:21:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:21:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:22:10 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:22:10 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
 INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
 path <
   Element {
@@ -94,9 +114,63 @@ path <
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
 
+Mar 29, 2022 6:22:29 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:22:29 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+>>>>>>> Stashed changes
+INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+com.google.cloud.datastore.core.exception.DatastoreException: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+	at com.google.cloud.datastore.core.exception.DatastoreException.withProblem(DatastoreException.java:176)
+	at com.google.cloud.datastore.emulator.impl.util.FirestoreEmulatorConverters.checkMutation(FirestoreEmulatorConverters.java:168)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commitHelper(CloudFirestoreV1.java:878)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:780)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commit(CloudFirestoreV1.java:416)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1Router.commit(CloudFirestoreV1Router.java:137)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.lambda$commit$8(FirestoreV1GrpcAdapter.java:156)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.unary(FirestoreV1GrpcAdapter.java:67)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.access$000(FirestoreV1GrpcAdapter.java:39)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.commit(FirestoreV1GrpcAdapter.java:156)
+	at com.google.firestore.v1.FirestoreGrpc$MethodHandlers.invoke(FirestoreGrpc.java:1224)
+	at io.grpc.stub.ServerCalls$UnaryServerCallHandler$UnaryServerCallListener.onHalfClose(ServerCalls.java:182)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.halfClosed(ServerCallImpl.java:331)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1HalfClosed.runInContext(ServerImpl.java:866)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+<<<<<<< Updated upstream
 Mar 28, 2022 10:38:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
 Mar 28, 2022 10:38:59 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+=======
+Mar 29, 2022 6:22:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:22:58 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+>>>>>>> Stashed changes
 INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
 path <
   Element {
@@ -141,7 +215,57 @@ path <
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:39:39 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+=======
+Mar 29, 2022 6:23:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:23:07 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+com.google.cloud.datastore.core.exception.DatastoreException: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+	at com.google.cloud.datastore.core.exception.DatastoreException.withProblem(DatastoreException.java:176)
+	at com.google.cloud.datastore.emulator.impl.util.FirestoreEmulatorConverters.checkMutation(FirestoreEmulatorConverters.java:168)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commitHelper(CloudFirestoreV1.java:878)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:780)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commit(CloudFirestoreV1.java:416)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1Router.commit(CloudFirestoreV1Router.java:137)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.lambda$commit$8(FirestoreV1GrpcAdapter.java:156)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.unary(FirestoreV1GrpcAdapter.java:67)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.access$000(FirestoreV1GrpcAdapter.java:39)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.commit(FirestoreV1GrpcAdapter.java:156)
+	at com.google.firestore.v1.FirestoreGrpc$MethodHandlers.invoke(FirestoreGrpc.java:1224)
+	at io.grpc.stub.ServerCalls$UnaryServerCallHandler$UnaryServerCallListener.onHalfClose(ServerCalls.java:182)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.halfClosed(ServerCallImpl.java:331)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1HalfClosed.runInContext(ServerImpl.java:866)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Mar 29, 2022 6:23:09 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
 WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
 java.io.IOException: An existing connection was forcibly closed by the remote host
 	at sun.nio.ch.SocketDispatcher.read0(Native Method)
@@ -162,7 +286,54 @@ java.io.IOException: An existing connection was forcibly closed by the remote ho
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.lang.Thread.run(Unknown Source)
 
+Mar 29, 2022 6:23:27 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.io.IOException: An existing connection was forcibly closed by the remote host
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Unknown Source)
+
+Mar 29, 2022 6:23:57 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+>>>>>>> Stashed changes
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.io.IOException: An existing connection was forcibly closed by the remote host
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Unknown Source)
+
+<<<<<<< Updated upstream
 Mar 28, 2022 10:39:58 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+=======
+Mar 29, 2022 6:24:06 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+>>>>>>> Stashed changes
 WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
 java.io.IOException: An existing connection was forcibly closed by the remote host
 	at sun.nio.ch.SocketDispatcher.read0(Native Method)
@@ -183,9 +354,15 @@ java.io.IOException: An existing connection was forcibly closed by the remote ho
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:44:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
 Mar 28, 2022 10:44:12 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+=======
+Mar 29, 2022 6:37:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:37:35 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+>>>>>>> Stashed changes
 INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
 path <
   Element {
@@ -230,9 +407,36 @@ path <
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:44:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
 Mar 28, 2022 10:44:53 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+=======
+Mar 29, 2022 6:38:34 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.io.IOException: An existing connection was forcibly closed by the remote host
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Unknown Source)
+
+Mar 29, 2022 6:40:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:40:34 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+>>>>>>> Stashed changes
 INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
 path <
   Element {
@@ -277,7 +481,11 @@ path <
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:45:11 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+=======
+Mar 29, 2022 6:41:34 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+>>>>>>> Stashed changes
 WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
 java.io.IOException: An existing connection was forcibly closed by the remote host
 	at sun.nio.ch.SocketDispatcher.read0(Native Method)
@@ -298,7 +506,58 @@ java.io.IOException: An existing connection was forcibly closed by the remote ho
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:45:53 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+=======
+Mar 29, 2022 6:43:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:43:30 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+com.google.cloud.datastore.core.exception.DatastoreException: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+	at com.google.cloud.datastore.core.exception.DatastoreException.withProblem(DatastoreException.java:176)
+	at com.google.cloud.datastore.emulator.impl.util.FirestoreEmulatorConverters.checkMutation(FirestoreEmulatorConverters.java:168)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commitHelper(CloudFirestoreV1.java:878)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:780)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commit(CloudFirestoreV1.java:416)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1Router.commit(CloudFirestoreV1Router.java:137)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.lambda$commit$8(FirestoreV1GrpcAdapter.java:156)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.unary(FirestoreV1GrpcAdapter.java:67)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.access$000(FirestoreV1GrpcAdapter.java:39)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.commit(FirestoreV1GrpcAdapter.java:156)
+	at com.google.firestore.v1.FirestoreGrpc$MethodHandlers.invoke(FirestoreGrpc.java:1224)
+	at io.grpc.stub.ServerCalls$UnaryServerCallHandler$UnaryServerCallListener.onHalfClose(ServerCalls.java:182)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.halfClosed(ServerCallImpl.java:331)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1HalfClosed.runInContext(ServerImpl.java:866)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Mar 29, 2022 6:44:29 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+>>>>>>> Stashed changes
 WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
 java.io.IOException: An existing connection was forcibly closed by the remote host
 	at sun.nio.ch.SocketDispatcher.read0(Native Method)
@@ -319,9 +578,17 @@ java.io.IOException: An existing connection was forcibly closed by the remote ho
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:46:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
 INFO: Detected HTTP/2 connection.
 Mar 28, 2022 10:46:26 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+=======
+Mar 29, 2022 6:50:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:50:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:50:13 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+>>>>>>> Stashed changes
 INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
 path <
   Element {
@@ -366,7 +633,11 @@ path <
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:47:26 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+=======
+Mar 29, 2022 6:51:12 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+>>>>>>> Stashed changes
 WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
 java.io.IOException: An existing connection was forcibly closed by the remote host
 	at sun.nio.ch.SocketDispatcher.read0(Native Method)
@@ -387,6 +658,7 @@ java.io.IOException: An existing connection was forcibly closed by the remote ho
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
 Mar 28, 2022 10:53:06 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
 INFO: Websocket client disconnected
 Mar 28, 2022 10:53:47 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
@@ -432,6 +704,176 @@ java.io.IOException: An existing connection was forcibly closed by the remote ho
 	at java.lang.Thread.run(Unknown Source)
 
 Mar 28, 2022 10:53:47 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+=======
+Mar 29, 2022 6:52:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:01 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+Mar 29, 2022 6:52:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:52:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:07 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:13 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:15 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:52:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:00 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:08 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:14 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:19 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:53:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:54:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:54:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:54:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:54:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:54:31 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:54:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 6:54:51 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+INFO: operation failed: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+com.google.cloud.datastore.core.exception.DatastoreException: no entity to update: app: "dev~year-2-software-engineering"
+path <
+  Element {
+    type: "comments"
+    name: "undefined"
+  }
+>
+
+	at com.google.cloud.datastore.core.exception.DatastoreException.withProblem(DatastoreException.java:176)
+	at com.google.cloud.datastore.emulator.impl.util.FirestoreEmulatorConverters.checkMutation(FirestoreEmulatorConverters.java:168)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commitHelper(CloudFirestoreV1.java:878)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:780)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1.commit(CloudFirestoreV1.java:416)
+	at com.google.cloud.datastore.emulator.impl.CloudFirestoreV1Router.commit(CloudFirestoreV1Router.java:137)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.lambda$commit$8(FirestoreV1GrpcAdapter.java:156)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.unary(FirestoreV1GrpcAdapter.java:67)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter.access$000(FirestoreV1GrpcAdapter.java:39)
+	at com.google.cloud.datastore.emulator.firestore.v1.FirestoreV1GrpcAdapter$1.commit(FirestoreV1GrpcAdapter.java:156)
+	at com.google.firestore.v1.FirestoreGrpc$MethodHandlers.invoke(FirestoreGrpc.java:1224)
+	at io.grpc.stub.ServerCalls$UnaryServerCallHandler$UnaryServerCallListener.onHalfClose(ServerCalls.java:182)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.PartialForwardingServerCallListener.onHalfClose(PartialForwardingServerCallListener.java:35)
+	at io.grpc.ForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:23)
+	at io.grpc.ForwardingServerCallListener$SimpleForwardingServerCallListener.onHalfClose(ForwardingServerCallListener.java:40)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onHalfClose(Contexts.java:86)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.halfClosed(ServerCallImpl.java:331)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1HalfClosed.runInContext(ServerImpl.java:866)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+Mar 29, 2022 6:55:05 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:55:51 PM io.netty.channel.DefaultChannelPipeline onUnhandledInboundException
+>>>>>>> Stashed changes
 WARNING: An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
 java.io.IOException: An existing connection was forcibly closed by the remote host
 	at sun.nio.ch.SocketDispatcher.read0(Native Method)
@@ -452,3 +894,72 @@ java.io.IOException: An existing connection was forcibly closed by the remote ho
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.lang.Thread.run(Unknown Source)
 
+<<<<<<< Updated upstream
+=======
+Mar 29, 2022 6:56:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:57:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:58:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 6:59:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:00:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:01:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:02:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:03:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:04:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:05:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:06:23 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:07:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:08:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:09:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:10:24 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:11:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:12:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:13:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:14:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 7:14:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:15:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:16:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:17:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:18:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:19:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:20:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:20:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+Mar 29, 2022 7:21:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:22:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:24:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:25:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:26:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Mar 29, 2022 7:27:02 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+>>>>>>> Stashed changes
