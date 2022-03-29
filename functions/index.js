@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
-const cors = require('cors')({origin: true});
+const cors = require('cors')({origin: true}); // still experiencing cors issues even with this + npm install cors
 
 admin.initializeApp();
 
@@ -52,12 +52,13 @@ exports.deletecomment = functions.https.onRequest((request, response) => {
 
 exports.updatecomment = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
-        return admin.firestore().collection('comments').doc(request.query.id).update({comment:request.body.data.comment}).then(() => {
+        return admin.firestore().collection('comments').doc(request.query.id).update(request.body.data).then(() => {
             response.send({"data": "Updated document in database"});
         });
     });
 });
 
+// This function is not doing what its supposed to
 exports.secure = functions.https.onCall((data, context) => {
     const uid = context.auth.uid;
     if(!uid) {

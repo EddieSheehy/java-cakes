@@ -1,6 +1,5 @@
-
-
 <template>
+  <!--Main page for displaying listings to general users-->
     <div class="mb-3">
     <table border = "2" id="array-rendering">
         <tr>
@@ -9,14 +8,16 @@
           <th>Address</th>
           <th>Price</th>
           <th>Beds</th>
-          <th></th>
+          <th id="descplace">Description</th>
       </tr>
+      <!--A table row will be made for each comment-->
       <tr v-for="comment in comments">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>{{comment.contact}}</td>
         <td>{{comment.comment}}</td>
         <td>€{{comment.price}}</td>
-        <td>{{comment.beds}}</td>
+        <td id="bedsplace">{{comment.dblbeds}}<br>{{comment.sglbeds}}<br>{{comment.twnbeds}}</td>
+        <td>{{comment.description}}</td>
         
       </tr>
     </table>
@@ -37,6 +38,7 @@
                 comments: []
             }
         },
+        // created() auto-lists comments on page creation
         created(){
           this.getUserComments();
         },
@@ -46,6 +48,7 @@
                 const functions = getFunctions(app);
                 if(window.location.hostname === "localhost") // Check if working locally
                     connectFunctionsEmulator(functions, "localhost", 5001);
+                // populated getComments using getcomments function in index.js
                 const getComments = httpsCallable(functions, 'getcomments');
                 let loader = this.$loading.show({
                     // Optional parameters
@@ -91,5 +94,9 @@
 
     #imagebox{
         width:10%;
+    }
+
+        #descplace{
+        width:22%;
     }
 </style>

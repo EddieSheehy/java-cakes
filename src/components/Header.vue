@@ -1,4 +1,6 @@
 <template>
+  <!--Page header that is visible on all pages-->
+
   <div class="nav">
       <li class = "link" display="block"><router-link to="/"><img alt="Java Cake logo" src="../assets/logo.png"></router-link></li>
       <li class = "link" display="block"><router-link  v-if="!isLoggedIn" to="/register">Register</router-link></li>

@@ -1,4 +1,6 @@
 <template>
+  <!--Page for registering an account-->
+
   <div class="container">
     <h1>Create An Account</h1>
     <div class="form-group">
@@ -26,6 +28,7 @@
       <small id="emailHelp" class="form-text text-muted">We'll never share your email or password with anyone else.</small>
     </div>
     <br />
+    <!--Button adds new user to database-->
     <button @click="register" onclick="window.location.href='/'" class="btn btn-primary">Create Account</button>
   </div>
 </template>
@@ -48,21 +51,22 @@ export default {
   },
   methods: {
     register() {
+      // firebase function that gets authorisation information
       const auth = getAuth(app);
+      // firebase function to add new user to our authentication database
       createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          // Redirects to home page
           this.$router.push("/");
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode);
           console.log(errorMessage);
-          // ..
         });
     },
   },
