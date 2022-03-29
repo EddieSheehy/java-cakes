@@ -11,6 +11,7 @@ admin.initializeApp();
 // Accept comment and return the same comment to the user
 exports.postcomment = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
+
         const currentTime = admin.firestore.Timestamp.now();
         request.body.timestamp = currentTime;
         return admin.firestore().collection('comments').add({description:request.body.data.description,imagename:request.body.data.imagename,image:request.body.data.image,comment:request.body.data.comment,contact:request.body.data.contact, price:request.body.data.price, dblbeds:request.body.data.dblbeds,sglbeds:request.body.data.sglbeds,twnbeds:request.body.data.twnbeds, contact:request.body.data.contact, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
@@ -80,4 +81,5 @@ exports.secure = functions.https.onCall((data, context) => {
             return({data : myData});
         });
     }
-});
+}
+);

@@ -200,16 +200,16 @@ export default {
             imageUrl = url;
 
             postComment({
-              contact: this.contact,
-              comment: this.comment,
-              dblbeds: opDbl,
-              sglbeds: opSgl,
-              twnbeds: opTwn,
-              price: this.price,
-              image: imageUrl,
-              imagename:filename,
-              description: this.description,
-              uid: uid,
+              "contact": this.contact,
+              "comment": this.comment,
+              "dblbeds": opDbl,
+              "sglbeds": opSgl,
+              "twnbeds": opTwn,
+              "price": this.price,
+              "imag": imageUrl,
+              "imagename":filename,
+              "description": this.description,
+              "uid": uid,
             }).then((result) => {
               this.$router.push("/secure");
               console.log(result);

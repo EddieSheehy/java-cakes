@@ -92,30 +92,26 @@
 <script>
     import app from "../api/firebase"
     import { getStorage, ref, deleteObject } from "firebase/storage";
-    import { getDatabase, ref as dbRef, set,update} from "firebase/database"
-    import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+    import { getAuth, signOut } from "firebase/auth";
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
     const storage = getStorage(app);
 
-
-
-
     export default {
-        beforeRouteEnter(to, from, next) {
-            auth.onAuthStateChanged(function(user) {
-                if (user) {
-                    // User is signed in continue to the page
-                    next();
-                } else
-                {
-                    // No user is signed in.
-                    next({path: '/'})
-                    console.log("No user signed in")
-                    // Send them back to the login page
-                }
-            });
-        },
+      beforeRouteEnter(to, from, next) {
+        auth.onAuthStateChanged((user) => {
+          if (user) {
+            // User is signed in continue to the page
+            next();
+          } else {
+            // No user is signed in.
+            next({path: '/'})
+            alert("No user signed in");
+            console.log("No user signed in")
+            // Send them back to the login page
+          }
+        });
+      },
 
         name: "Secure",
         data(){

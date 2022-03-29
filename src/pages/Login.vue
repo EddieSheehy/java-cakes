@@ -22,6 +22,7 @@
     import app from "../api/firebase"
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
+    import getCookie from "../utility/utility";
 
     export default {
         name: "Login",
@@ -37,7 +38,9 @@
             signInWithEmailAndPassword(auth, this.email, this.password).then((userCredential) => {
                 // Signed in
                 var user = userCredential.user;
+                document.cookie = "accessToken=" + user.accessToken;
                 console.log(user);
+                console.logg("Cookie Jar Access Token : ", getCookie("accessToken"));
                 this.$router.push("/");
             }).catch((error) => {
                 var errorCode = error.code;
