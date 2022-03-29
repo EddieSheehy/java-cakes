@@ -45,7 +45,7 @@
                 {
                     // No user is signed in.
                     next({path: '/'})
-                    console.log("No user signed in")
+                    
                     // Send them back to the login page
                 }
             });
