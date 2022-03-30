@@ -20,7 +20,9 @@
       </tr>
       <!--For loop that goes through json of comments stored on database so data can be listed-->
       <tr v-for="comment in comments">
-        <div v-if="comment.uid === userid">
+        <!--<div @onLoad="setUid(comment.uid)">-->
+
+        <!--<div v-if="comment.uid === this.userId">-->
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>
           <div v-if="!editing">
@@ -67,10 +69,8 @@
             <button @click="save(comment.id)"> Save </button>
           </div>
         </td>
-        </div>
-        <div v-if="comment.uid !== userid">
-          You have not posted any listings
-        </div>
+        <!--</div>-->
+        <!--</div>-->
       </tr>
     </table>
     </div>
@@ -85,21 +85,18 @@
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
     const storage = getStorage(app);
-    let userid;
+    //const userId = auth.currentUser.uid;
 
     export default {
         beforeRouteEnter(to, from, next) {
             auth.onAuthStateChanged(function(user) {
                 if (user) {
                     // User is signed in continue to the page
-                  userid = user.uid;
-                  console.log(userid);
-                    next();
+                  next();
                 } else
                 {
                     // No user is signed in.
                     next({path: '/'})
-                    alert("No User Logged In");
                     // Send them back to the login page
                 }
             });
@@ -113,6 +110,7 @@
               tempComment: "",
               tempPrice: "",
               tempDescription: "",
+              //userId: "",
               editing: false
             }
         },
@@ -122,6 +120,7 @@
         },
 
         methods : {
+
           // this function does not seem to actually only list users comments
           getUserComments() {
             const functions = getFunctions(app);
@@ -146,7 +145,8 @@
               else
                 this.comments = result.data;
             });
-          },
+          }
+          ,
 
           deleteComment(id, imagename) {
             console.log(id);
@@ -160,7 +160,6 @@
             const desertRef = ref(storage, imagename);
             console.log(desertRef);
 
-            if(user.uid == id.uid) {
             deleteComment().then((result) => {
               this.getUserComments() // To refresh the client
               // Deletes the reference variable so it is reused by accident
@@ -169,10 +168,7 @@
               }).catch((error) => {
                 // Uh-oh, an error occurred!
               });
-            })}
-            else {
-              alert("You do not have Permission to Delete this Listing")
-            }
+            })
           },
 
           logout() {
@@ -181,6 +177,10 @@
               this.$router.push("/");
             });
           },
+
+          /*setUid(uid) {
+            this.userId = uid;
+          },*/
 
           enableEditing(contact, comment, price, description) {
             this.tempContact = contact;
