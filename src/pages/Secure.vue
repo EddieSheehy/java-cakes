@@ -20,6 +20,7 @@
       </tr>
       <!--For loop that goes through json of comments stored on database so data can be listed-->
       <tr v-for="comment in comments">
+        <div v-if="comment.uid === userid">
         <td id=imagebox><img :src =comment.image width=150 height=150 ></td>
         <td>
           <div v-if="!editing">
@@ -66,6 +67,10 @@
             <button @click="save(comment.id)"> Save </button>
           </div>
         </td>
+        </div>
+        <div v-if="comment.uid !== userid">
+          You have not posted any listings
+        </div>
       </tr>
     </table>
     </div>
@@ -80,21 +85,21 @@
     import { getFunctions, httpsCallable, connectFunctionsEmulator } from "firebase/functions";
     const auth = getAuth(app);
     const storage = getStorage(app);
-
-
-
+    let userid;
 
     export default {
         beforeRouteEnter(to, from, next) {
             auth.onAuthStateChanged(function(user) {
                 if (user) {
                     // User is signed in continue to the page
+                  userid = user.uid;
+                  console.log(userid);
                     next();
                 } else
                 {
                     // No user is signed in.
                     next({path: '/'})
-                    
+                    alert("No User Logged In");
                     // Send them back to the login page
                 }
             });
@@ -142,6 +147,7 @@
                 this.comments = result.data;
             });
           },
+
           deleteComment(id, imagename) {
             console.log(id);
             console.log(imagename);
@@ -152,8 +158,9 @@
             const deleteComment = httpsCallable(functions, 'deletecomment?id=' + id);
             // desertRef variable stores path to image file
             const desertRef = ref(storage, imagename);
-
             console.log(desertRef);
+
+            if(user.uid == id.uid) {
             deleteComment().then((result) => {
               this.getUserComments() // To refresh the client
               // Deletes the reference variable so it is reused by accident
@@ -162,7 +169,10 @@
               }).catch((error) => {
                 // Uh-oh, an error occurred!
               });
-            })
+            })}
+            else {
+              alert("You do not have Permission to Delete this Listing")
+            }
           },
 
           logout() {

@@ -80,4 +80,8 @@ exports.secure = functions.https.onCall((data, context) => {
             return({data : myData});
         });
     }
-});
+}
+
+
+
+);
