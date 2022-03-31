@@ -29,7 +29,7 @@
     </div>
     <br />
     <!--Button adds new user to database-->
-    <button @click="register" onclick="window.location.href='/'" class="btn btn-primary">Create Account</button>
+    <button @click="register" class="btn btn-primary">Create Account</button>
   </div>
 </template>
 
