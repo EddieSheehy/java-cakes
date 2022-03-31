@@ -1,10 +1,12 @@
 <template>
+  <!--Page is for listing creation and is only accessible by administrators-->
 
   <div ref="container" class="container">
     <h1>Listing Creation</h1>
-    <p>Here you can create listing for propeties</p>
+    <p>Here you can create listing for properties</p>
     <div class="mb-3">
       <label for="addressTextArea" class="form-label">Address</label>
+      <!--Note that "comment" stores address-->
       <textarea
         class="form-control"
         v-model="comment"
@@ -14,12 +16,12 @@
       ></textarea>
     </div>
     <div class="mb-3">
-      <label for="emailTextArea" class="form-label">Email</label>
+      <label id="contactTextArea" class="form-label">Contact</label>
       <input
         class="form-control"
-        v-model="email"
-        id="Email"
-        placeholder="Email"
+        v-model="contact"
+        id="contact"
+        placeholder="Email or Phone Number"
       />
     </div>
     <div class="mb-3">
@@ -32,48 +34,65 @@
       />
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea" class="form-label">Beds</label>
-      <input
-        class="form-control"
-        v-model="beds"
-        id="beds"
-        placeholder="No. Beds"
-      />
-      <div class="mb-3 right">
-        <br>
-        <a>Image Upload     </a>
-        <button type="button" @click="click1" class="btn btn-primary">Choose File</button>
-        <input type="file" ref="input1"
-               style="display: none"
-               @change="previewImage" accept="image/>*" >
-      </div>
-      <div v-if="imageData!=null">
-        <img class="preview" height="268" width="356" :src="img1">
-        <br>
-      </div>
+      <label for="bedsTextarea" class="form-label">Beds No Of Doubles</label>
+      <select id="numDoubles">
+        <!--Drop down list of options-->
+        <option value="0">0 Double Rooms</option>
+        <option value="1">1 Double Rooms</option>
+        <option value="2">2 Double Rooms</option>
+        <option value="3">3 Double Rooms</option>
+        <option value="4">4 Double Rooms</option>
+        <option value="5">5 Double Rooms</option>
+        <option value="6">6 Double Rooms</option>
+        <option value="7">7 Double Rooms</option>
+        <option value="8">8 Double Rooms</option>
+      </select>
     </div>
-    <div class="mb-3">
-      <label for="imageTextarea" class="form-label">Image</label>
-      <input
+        <div class="mb-3">
+      <label for="bedsTextarea" class="form-label">Beds No Of Singles</label>
+      <select id="numSingles">
+        <option value="0">0 Single Rooms</option>
+        <option value="1">1 Single Room</option>
+        <option value="2">2 Single Rooms</option>
+        <option value="3">3 Single Rooms</option>
+        <option value="4">4 Single Rooms</option>
+        <option value="5">5 Single Rooms</option>
+        <option value="6">6 Single Rooms</option>
+        <option value="7">7 Single Rooms</option>
+        <option value="8">8 Single Rooms</option>
+      </select>
+    </div>
+        <div class="mb-3">
+      <label for="bedsTextarea" class="form-label">Beds No Of Twins</label>
+      <select id="numTwins">
+        <option value="0">0 Twin Rooms</option>
+        <option value="1">1 Twin Room</option>
+        <option value="2">2 Twin Rooms</option>
+        <option value="3">3 Twin Rooms</option>
+        <option value="4">4 Twin Rooms</option>
+        <option value="5">5 Twin Rooms</option>
+        <option value="6">6 Twin Rooms</option>
+        <option value="7">7 Twin Rooms</option>
+        <option value="8">8 Twin Rooms</option>
+      </select>
+    </div>
+     <div class="mb-3">
+      <label for="descriptionTextarea" class="form-label">Description</label>
+      <textarea
         class="form-control"
-        v-model="image"
-        id="image"
-        placeholder="Image"
-      />
+        v-model="description"
+        id="description"
+        placeholder="Description"></textarea>
     </div>
   <div id="uploadfile">
     <form id="upload-form">
       <input type="file" name="file" required/>
-      
-      <input type="submit" value="Upload"/>
-      </form>
-      </div>
-      
 
-    <div class="mb-3 right">
-      <button type="button" @click="postComment" class="btn btn-primary">
+      <!--"postComment" actually posts listings-->
+      <button type="submit" @click="postComment" class="btn btn-primary">
         Upload
       </button>
+      </form>
     </div>
 
   </div>
@@ -81,11 +100,11 @@
 
 <script>
 
-import Blog2 from "./Blog2";
+
 import app from "../api/firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getStorage, ref as stRef,uploadBytes,getDownloadURL} from "firebase/storage";
-import {getDatabase, ref as dbRef, push, set} from "firebase/database";
+import {getDatabase, ref as dbRef, push, set, onValue} from "firebase/database";
 import {
   getFunctions,
   httpsCallable,
@@ -93,31 +112,29 @@ import {
 } from "firebase/functions";
 import { store } from "../store/store";
 
+// variables for storing image references
 const storage = getStorage(app);
 const database = getDatabase();
 const databaseReference = dbRef(database, "files");
 
+
+onValue(databaseReference, function (snapshot) {
+  snapshot.forEach(function (childSnapshot){
+
+    const value = childSnapshot.val();
+    const storageRefDownload = stRef(storage, value.name+Date());
+
+    // firebase function that gives url from image directory
+    getDownloadURL(storageRefDownload).then(function (url){
+      
+    });
+  });
+});
+
+
 window.addEventListener("load", function () {
   document.getElementById("upload-form").addEventListener("submit", function (){
     event.preventDefault();
-    var form = event.target;
-
-    var file = form.file.files[0];
-    
-    const storageRef = stRef(storage, new Date()+ "-" +file.name);
-
-    uploadBytes(storageRef, file).then(function (snapshot){
-      var newFileRef = push(databaseReference);
-      console.log(databaseReference);
-
-
-      set(newFileRef, {
-        "name":file.name,
-
-      
-    
-      });
-    });
   });
 });
 
@@ -127,153 +144,100 @@ export default {
     return {
       comment: "",
       price: "",
-      beds: "",
+      dblbeds: "",
+      sglbeds: "",
+      twnbeds: "",
       image:"",
+      imagename:"",
+      description:"",
       comments: [],
       tempValue: "",
       editing: false,
       store,
-      caption: '',
-      img1: '',
-      imageData: null
     };
   },
-
-  components: {
-    Blog2,
-  },
-  created() {
-    this.getComments();
-  },
   methods: {
-    enableEditing(comment) {
-      this.tempValue = comment;
-      this.editing = true;
-    },
-    disableEditing() {
-      this.tempValue = null;
-      this.editing = false;
-    },
-    save(id) {
-      const functions = getFunctions(app);
-      if (window.location.hostname === "localhost")
-        // Check if working locally
-        connectFunctionsEmulator(functions, "localhost", 5001);
-      const updateComment = httpsCallable(functions, "updatecomment?id=" + id);
-      updateComment({ comment: this.tempValue }).then((result) => {
-        this.getComments();
-        this.editing = false;
-      });
-    },
-    postComment() {
-      const functions = getFunctions(app);
-      const auth = getAuth(app);
-      if (window.location.hostname === "localhost")
-        // Check if working locally
-        connectFunctionsEmulator(functions, "localhost", 5001);
-      const postComment = httpsCallable(functions, "postcomment");
-      let uid = "anonymous";
-      if (auth.currentUser != null) {
-        // Check that there is a logged in user
-        uid = auth.currentUser.uid; // if logged in then assign uid
-      }
-      postComment({ email: this.email, comment: this.comment, beds: this.beds, price: this.price,image:this.image, uid: uid }).then(
-        (result) => {
-          // Read result of the Cloud Function.
-          // /** @type {any} */
-          this.$router.push("/secure");
-          console.log(result);
+
+    // postComment is used for adding listings
+    postComment(){
+        const functions = getFunctions(app);
+        const auth = getAuth(app);
+        
+        if (window.location.hostname === "localhost")
+          // Check if working locally
+          connectFunctionsEmulator(functions, "localhost", 5001);
+        
+        const postComment = httpsCallable(functions, "postcomment");
+        let uid = "anonymous";
+        
+        if (auth.currentUser != null) {
+          // Check that there is a logged in user
+          uid = auth.currentUser.uid; // if logged in then assign uid
         }
-      );
-    },
-    getComments() {
-      const functions = getFunctions(app);
-      if (window.location.hostname === "localhost")
-        // Check if working locally
-        connectFunctionsEmulator(functions, "localhost", 5001);
-      const getComments = httpsCallable(functions, "getcomments");
-      let loader = this.$loading.show({
-        // Optional parameters
-        loader: "dots",
-        container: this.$refs.container,
-        canCancel: false,
-      });
-      getComments().then((result) => {
-        // Read result of the Cloud Function.
-        // /** @type {any} */
-        // once the response has returned hide the loader
-        loader.hide();
-        console.log(result);
-        if (result.data === "No data in database")
-          this.comments = [{ comment: "No comments posted yet" }];
-        else this.comments = result.data;
-      });
-    },
-    deleteComment(id) {
-      console.log(id);
-      const functions = getFunctions(app);
-      if (window.location.hostname === "localhost")
-        // Check if working locally
-        connectFunctionsEmulator(functions, "localhost", 5001);
-      const deleteComment = httpsCallable(functions, "deletecomment?id=" + id);
-      deleteComment().then((result) => {
-        if (result.data == "Deleted document from database") this.getComments(); // To refresh the client
-      });
-    },
+        
+        // Insert Image and Grab Url
+        let imageUrl = '';
+        
+        var file = document.getElementById("upload-form").file.files[0];
+        const filename = file.name+Date();
 
-    click1() {
-      this.$refs.input1.click()
-    },
+        const storageRef = stRef(storage, filename);
+        console.log(storageRef);
+        uploadBytes(storageRef, file).then((snapshot) => {
+          var newFileRef = push(databaseReference);
+          var d= document.getElementById("numDoubles");
+          var s= document.getElementById("numSingles");
+          var t= document.getElementById("numTwins");
+          var opDbl = d.options[d.selectedIndex].text;
+          var opSgl = s.options[s.selectedIndex].text;
+          var opTwn = t.options[t.selectedIndex].text;
+          set(newFileRef, {
+            "name":file.name
+          });
 
-    previewImage(event) {
-      this.uploadValue=0;
-      this.img1=null;
-      this.imageData = event.target.files[0];
-      this.onUpload()
-    },
+          // storage reference to image is passed in to function
+          getDownloadURL(storageRef).then((url) => {
+            imageUrl = url;
 
-    onUpload(){
-      this.img1=null;
-      const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
-      storageRef.on(`state_changed`,snapshot=>{
-            this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-          }, error=>{console.log(error.message)},
-          ()=>{this.uploadValue=100;
-            storageRef.snapshot.ref.getDownloadURL().then((url)=>{
-              this.img1 =url;
-              console.log(this.img1)
+            postComment({
+              contact: this.contact,
+              comment: this.comment,
+              dblbeds: opDbl,
+              sglbeds: opSgl,
+              twnbeds: opTwn,
+              price: this.price,
+              image: imageUrl,
+              imagename:filename,
+              description: this.description,
+              uid: uid,
+            }).then((result) => {
+              this.$router.push("/secure");
+              console.log(result);
             });
-          }
-      );
-    },
-    create () {
-      const post = {
-        photo: this.img1,
-        caption: this.caption
-      }
-
-      firebase.database().ref('PhotoGallery').push(post)
-          .then((response) => {
-            console.log(response)
-          })
-          .catch(err => {
-            console.log(err)
-          })
-    },
+          });
+        });    
+        },
   },
 };
 </script>
 
 <style scoped>
-.container {
-  text-align: left;
-}
-.right {
-  text-align: right;
+
+
+input{
+  margin-left:auto;
+  margin-right:auto;
+  width:25%;
 }
 
-a {
-  font-size: 12px;
-  color: gray;
+textarea{
+  margin-left:auto;
+  margin-right:auto;
+  width:25%;
 }
+
+label{
+  font-weight:bold;
+}
+
 </style>

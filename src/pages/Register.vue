@@ -1,20 +1,19 @@
 <template>
+  <!--Page for registering an account-->
+
   <div class="container">
-    <h1>Create an account</h1>
+    <h1>Create An Account</h1>
     <div class="form-group">
       <br />
-      <label for="exampleInputEmail1">Email address</label>
+      <label for="InputEmail">Email Address</label>
       <input
-        type="email"
+        type="contact"
         v-model="email"
         class="form-control"
-        id="exampleInputEmail1"
+        id="InputEmail"
         aria-describedby="emailHelp"
-        placeholder="Enter email"
+        placeholder="Enter Email"
       />
-      <small id="emailHelp" class="form-text text-muted"
-        >We'll never share your email with anyone else.</small
-      >
     </div>
     <br>
     <div class="form-group">
@@ -23,14 +22,14 @@
         type="password"
         v-model="password"
         class="form-control"
-        id="exampleInputPassword1"
+        id="InputPassword"
         placeholder="Password"
       />
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email or password with anyone else.</small>
     </div>
     <br />
-    <button @click="register" class="link">
-      <router-link to="/blog">Create Account</router-link>
-    </button>
+    <!--Button adds new user to database-->
+    <button @click="register" onclick="window.location.href='/'" class="btn btn-primary">Create Account</button>
   </div>
 </template>
 
@@ -52,25 +51,38 @@ export default {
   },
   methods: {
     register() {
+      // firebase function that gets authorisation information
       const auth = getAuth(app);
+      // firebase function to add new user to our authentication database
       createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          // Redirects to home page
           this.$router.push("/");
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode);
           console.log(errorMessage);
-          // ..
         });
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+  h1{
+    line-height:100px;
+  }
+
+  input{
+    width:25%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+</style>

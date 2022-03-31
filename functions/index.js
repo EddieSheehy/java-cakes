@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
-const cors = require('cors')({origin: true});
+const cors = require('cors')({origin: true}); // still experiencing cors issues even with this + npm install cors
 
 admin.initializeApp();
 
@@ -13,8 +13,7 @@ exports.postcomment = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
         const currentTime = admin.firestore.Timestamp.now();
         request.body.timestamp = currentTime;
-        return admin.firestore().collection('comments').add({
-        comment:request.body.data.comment,email:request.body.data.email, price:request.body.data.price, beds:request.body.data.beds, email:request.body.data.email,image:request.body.data.image, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
+        return admin.firestore().collection('comments').add({description:request.body.data.description,imagename:request.body.data.imagename,image:request.body.data.image,comment:request.body.data.comment,contact:request.body.data.contact, price:request.body.data.price, dblbeds:request.body.data.dblbeds,sglbeds:request.body.data.sglbeds,twnbeds:request.body.data.twnbeds, contact:request.body.data.contact, timestamp: request.body.timestamp, uid: request.body.data.uid }).then(() => {
             response.send({"data": "Saved in Database"});
         });
     });
@@ -53,12 +52,13 @@ exports.deletecomment = functions.https.onRequest((request, response) => {
 
 exports.updatecomment = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
-        return admin.firestore().collection('comments').doc(request.query.id).update({comment:request.body.data.comment}).then(() => {
+        return admin.firestore().collection('comments').doc(request.query.id).update(request.body.data).then(() => {
             response.send({"data": "Updated document in database"});
         });
     });
 });
 
+// This function is not doing what its supposed to
 exports.secure = functions.https.onCall((data, context) => {
     const uid = context.auth.uid;
     if(!uid) {
@@ -80,4 +80,8 @@ exports.secure = functions.https.onCall((data, context) => {
             return({data : myData});
         });
     }
-});
+}
+
+
+
+);
