@@ -1,6 +1,5 @@
 <template>
   <!--Page header that is visible on all pages-->
-
   <div class="nav">
       <li class = "link" display="block"><router-link to="/"><img alt="Java Cake logo" src="../assets/logo.png"></router-link></li>
       <li class = "link" display="block"><router-link  v-if="!isLoggedIn" to="/register">Register</router-link></li>
@@ -42,9 +41,7 @@ export default {
     }
   }
 }
-
 </script>
-
 <style scoped>
 .nav{
   background-color:#333;
@@ -61,6 +58,5 @@ export default {
   margin-top: 10px;
 }
 #logOut{
-  
 }
 </style>
